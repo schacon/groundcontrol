@@ -1,0 +1,10 @@
+GroundControl
+==========================
+
+Testing framework for remotely controlling the behavior
+of clients and a server and making sure they work 
+properly together.
+
+Authors: Scott Chacon
+         Nick Hengeveld
+         Rich Morin
