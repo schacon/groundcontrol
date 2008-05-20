@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+   <title>GroundControl - Reactrix Testing</title>
+   <link rel="stylesheet" href="/stylesheets/reset-fonts-grids.css" type="text/css">
+   <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+   <script src="/javascripts/application.js" type="text/javascript"></script>
+   <script src="/javascripts/jquery.js" type="text/javascript"></script>
+   <%= @content_for_header %>
+</head>
+<body>
+<div id="doc" class="yui-t7">
+  <div id="hd">
+    <div class="header">
+      
+      <div class="yui-g">      
+        <h1>GroundControl - Reactrix Automated Testing System</h1>
+  	  </div>
+  	  
+      <div class="appbar <%= @page %>">
+        <ul>
+          <li id="dashboard"><a href="/">Dashboard</a></li>
+          <li id="results"><a href="/">Results</a></li>
+          <li id="testers"><a href="/">Testers</a></li>
+          <li id="libraries"><a href="/">Libraries</a></li>
+          <li id="roles"><a href="/">Roles</a></li>
+          <li id="servers"><a href="/">Servers</a></li>
+        </ul>
+  	  </div>  	
+  	    
+	  </div>
+  </div>
+  <div id="bd">
+    <div class="main">
+	    <%= yield %>
+	  </div>
+  </div>
+  <div id="ft">Reactrix Testing Systems</div>
+</div>
+</body>

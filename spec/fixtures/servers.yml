@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  hostname: MyString
+  credentials: MyText
+  role_id: 1
+
+two:
+  name: MyString
+  hostname: MyString
+  credentials: MyText
+  role_id: 1

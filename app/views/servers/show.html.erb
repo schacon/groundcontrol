@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @server.name %>
+</p>
+
+<p>
+  <b>Hostname:</b>
+  <%=h @server.hostname %>
+</p>
+
+<p>
+  <b>Credentials:</b>
+  <%=h @server.credentials %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%=h @server.role_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_server_path(@server) %> |
+<%= link_to 'Back', servers_path %>

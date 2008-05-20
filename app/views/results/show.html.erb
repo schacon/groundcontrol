@@ -1,0 +1,23 @@
+<p>
+  <b>Project:</b>
+  <%=h @result.project_id %>
+</p>
+
+<p>
+  <b>Integration code:</b>
+  <%=h @result.integration_code %>
+</p>
+
+<p>
+  <b>Speed code:</b>
+  <%=h @result.speed_code %>
+</p>
+
+<p>
+  <b>Results:</b>
+  <%=h @result.results %>
+</p>
+
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

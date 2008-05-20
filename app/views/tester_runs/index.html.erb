@@ -1,0 +1,24 @@
+<h1>Listing tester_runs</h1>
+
+<table>
+  <tr>
+    <th>Results data</th>
+    <th>Tester</th>
+    <th>Results</th>
+  </tr>
+
+<% for tester_run in @tester_runs %>
+  <tr>
+    <td><%=h tester_run.results_data %></td>
+    <td><%=h tester_run.tester_id %></td>
+    <td><%=h tester_run.results_id %></td>
+    <td><%= link_to 'Show', tester_run %></td>
+    <td><%= link_to 'Edit', edit_tester_run_path(tester_run) %></td>
+    <td><%= link_to 'Destroy', tester_run, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tester_run', new_tester_run_path %>

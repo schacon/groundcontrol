@@ -1,0 +1,24 @@
+<h1>Listing libraries</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Project</th>
+  </tr>
+
+<% for library in @libraries %>
+  <tr>
+    <td><%=h library.name %></td>
+    <td><%=h library.code %></td>
+    <td><%=h library.project_id %></td>
+    <td><%= link_to 'Show', library %></td>
+    <td><%= link_to 'Edit', edit_library_path(library) %></td>
+    <td><%= link_to 'Destroy', library, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New library', new_library_path %>

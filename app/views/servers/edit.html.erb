@@ -1,0 +1,32 @@
+<h1>Editing server</h1>
+
+<%= error_messages_for :server %>
+
+<% form_for(@server) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Hostname</b><br />
+    <%= f.text_field :hostname %>
+  </p>
+
+  <p>
+    <b>Credentials</b><br />
+    <%= f.text_area :credentials %>
+  </p>
+
+  <p>
+    <b>Role</b><br />
+    <%= f.text_field :role_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @server %> |
+<%= link_to 'Back', servers_path %>

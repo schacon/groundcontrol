@@ -1,0 +1,26 @@
+<h1>Listing results</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Integration code</th>
+    <th>Speed code</th>
+    <th>Results</th>
+  </tr>
+
+<% for result in @results %>
+  <tr>
+    <td><%=h result.project_id %></td>
+    <td><%=h result.integration_code %></td>
+    <td><%=h result.speed_code %></td>
+    <td><%=h result.results %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New result', new_result_path %>

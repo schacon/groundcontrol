@@ -1,0 +1,31 @@
+<h1>New result</h1>
+
+<%= error_messages_for :result %>
+
+<% form_for(@result) do |f| %>
+  <p>
+    <b>Project</b><br />
+    <%= f.text_field :project_id %>
+  </p>
+
+  <p>
+    <b>Integration code</b><br />
+    <%= f.text_field :integration_code %>
+  </p>
+
+  <p>
+    <b>Speed code</b><br />
+    <%= f.text_field :speed_code %>
+  </p>
+
+  <p>
+    <b>Results</b><br />
+    <%= f.text_area :results %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', results_path %>
