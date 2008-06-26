@@ -1,0 +1,4 @@
+    clickAndWait "link=Home"
+    assertElementPresent "link=View All Displays"
+    assertElementPresent "link=View All Spots"
+

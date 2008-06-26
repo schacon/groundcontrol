@@ -1,0 +1,57 @@
+webapp:
+  hostname: reactrix.rmc1
+  url: https://reactrix.rmc1.xen.reactrix.com
+  url_username: reactrix
+  url_password: r34ctr!x
+  ssh_username: root
+  ssh_password: or,8$$mn
+  role: webapp
+urls:
+  webapp:
+    1_displays:
+      - / [current_user_id:/user/settings/(\d+)]
+      - /displays
+      - /displays/list [display_id:/displays/show/(\d+)]
+      - /displays/new
+      - /displays/generate_setupkey/rx_setup.rx
+      - /displays/overview
+      - /upload_images
+      - /displays/show/%display_id%
+      - /displays/monitor/%display_id%
+      - /displays/hours/%display_id%
+      - /displays/history/%display_id%
+      - /displays/calibrate/%display_id%
+      - /displays/upload_images/display_one/%display_id%
+      - /displays/branches/%display_id%
+      - /displays/schedule/%display_id%
+      - /displays/playlists/%display_id%
+      - /displays/status/%display_id%
+      - /repo/logs/%display_id%
+    2_controllers:
+      - /controllers/list
+    3_content:
+      - /content
+      - /content/list [spot_id:/content/show/(\d+)]
+      - /content/pick_spot
+      - /content/upload
+      - /content/playlists
+      - /content/show/%spot_id%
+    4_media_schedules:
+      - /schedules/list [schedule_id:/schedules/show/(\d+)]
+      - /schedules/show/%schedule_id%
+      - /advanced_scheduling
+      - /schedulings/list
+    5_reports:
+      - /reports
+      - /reports/media_schedule
+    6_admin:
+      - /admin
+      - /user/list [user_id:/user/show/(\d+)]
+      - /user/show/%user_id%
+      - /user/settings/%current_user_id%
+      - /admin/system_settings
+      - /media_admin
+      - /custom_fields/list
+      - /admin/groups
+      - /docs/api
+      - /admin/events

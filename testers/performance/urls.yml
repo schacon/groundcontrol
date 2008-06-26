@@ -1,0 +1,166 @@
+home:
+  landing: 
+    url: '/'
+    find: "Welcome to Reactrix Media Center"
+  settings: 
+    url: '/user/settings/$user.id$'
+    find: 'User Account Information'
+  edit: 
+    url: '/user/edit/$user.id$'
+    find: 'User Account Info :'
+    
+displays:
+  landing: 
+    url: '/displays'
+    find: 'Network Overview Page'
+  list: 
+    url: '/displays/list'
+    find: 'Viewing \d+ Displays'
+  new: 
+    url: '/displays/new'
+    find: 'Location'
+  show:
+    url: '/displays/show/$display.id$'
+    find: 'Display Status :'
+  monitor: 
+    url: '/displays/monitor/$display.id$'
+    find: 'Display Monitor'
+  schedule:
+    url: '/displays/schedule/$display.id$'
+    find: 'Content Schedule for Display'
+  hours: 
+    url: '/displays/hours/$display.id$'
+    find: 'Display Hours'
+  playlists:
+    url: '/displays/playlists/$display.id$'
+    find: 'Generated Playlists'
+  history:
+    url: '/displays/playlists/$display.id$'
+    find: 'Display History'
+  status:
+    url: '/displays/status/$display.id$'
+    find: 
+      - Display Status
+      - Projector Summary
+      - Pending Display Updates
+      - Completed Display Updates
+      - Pending Display Commands
+      - Completed Display Commands
+      - Airings Summary
+      - Display Summary
+      - Display Messages
+      - Uploaded Images
+  calibrate:
+    url: '/displays/calibrate/$display.id$'
+  logs:
+    url: '/repo/logs/$display.id$'
+  images:
+    url: '/upload_images/display_one/$display.id$'
+    find: 'View Display Images'
+  setup_key:
+    url: '/displays/generate_setupkey/rx_setup.rx'
+  overview:
+    url: '/displays/overview'
+    find: 
+      - 'Exclude Good'
+      - 'Exclude Offline'
+  controllers_list:
+    url: '/controllers/list'
+    find: 'Viewing \d+ Controllers'
+    
+media:
+  list:
+    url: '/content/list'
+    find: 'My Saved Views'
+  new:
+    url: '/content/new'
+    find: 'View All Templates'
+  upload:
+    url: '/content/upload'
+    find: 'Upload a Spot'
+  all_templates:
+    url: '/content/all_templates'
+    find: 'All Templates'
+  new_configure:
+    url: '/content/new_configure/$template.id$'
+    find: 'Save Spot and Finalize'
+  show:
+    url: '/content/show/$spot.id$'
+    find: 'Spot Information'
+  playlists:
+    url: '/content/playlists'
+    find: 'Current Unapproved Playlists'
+  app_playlists:
+    url: '/content/approved_playlists'
+    find: 'Current Approved Playlists'
+  schedule_list:
+    url: '/schedules/list'
+    find: 'Viewing \d+ Schedules'
+  new_schedule:
+    url: '/content/pick_spot'
+    find: 'Select a spot that you would like to add to the schedule'
+
+reports:
+  lamps:
+    url: '/reports/lamps'
+    find: 'Lamp Maintenance Report'
+  projectors:
+    url: '/reports/projectors'
+  schvsplaying:
+    url: '/reports/scheduled_playing'
+    find: 'Scheduled vs Playing Report'
+  media_schedule:
+    url: '/reports/media_schedule'
+    find: 'Network Media Schedule'
+  ms_displays:
+    url: '/reports/media_schedule_displays'
+    find: 'Network Media Schedule'
+  ms_spots:
+    url: '/reports/media_schedule_spots'
+    find: 'Network Media Schedule'
+  airings_data:
+    url: '/reports/airings_data'
+    find: 'Airings Data Browser'
+  fulfillment_schedule:
+    url: '/reports/spot_fulfillment_schedule'
+  fulfillment_location:
+    url: '/reports/spot_fulfillment_location'
+    
+admin:
+  landing:
+    url: '/admin'
+    find: 'System Administration'
+  user_list:
+    url: '/user/list'
+    find: 'Manage Users'
+  user_show:
+    url: '/user/show/$user.id$'
+    find: 'User Account Information'
+  system_settings:
+    url: '/admin/system_settings'
+    find: 'System Settings'
+  media_admin:
+    url: '/media_admin'
+    find: 'Media Scheduling Options'
+  custom_fields:
+    url: '/custom_fields/list'
+    find:
+      - Custom Display Fields
+      - Custom Controller Fields
+      - Custom Spot Fields
+      - Custom Schedule Fields
+  groups:
+    url: '/admin/groups'
+    find: 'Group Management'
+  api_docs:
+    url: '/docs/api'
+    find: 'RMC API Documentation'
+  system_events:
+    url: '/admin/events'
+    find: 'System Events'
+    
+docs:
+  refmanual:
+    url: '/2helpfile/ReferenceManual.pdf'
+  tutorial:
+    url: '/helpfile/TutorialDoc.pdf'

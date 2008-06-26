@@ -1,0 +1,14 @@
+webapp:
+  description: web application server
+
+sql:
+  description: application db server
+
+siteadmin:
+  description: application admin app server
+
+reactor:
+  description: physical reactor
+
+virt-reactor:
+  description: virtual reactor

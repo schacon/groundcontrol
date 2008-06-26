@@ -1,0 +1,25 @@
+webapp:
+  hostname: agador.rmc2
+  url: https://agador.rmc2.xen.reactrix.com
+  url_username: root
+  url_password: root
+  ssh_username: root
+  ssh_password:
+  role: webapp
+
+sql:
+  database: agador
+  db_username: root
+  db_password: root
+  ssh_username: root
+  ssh_password: root
+  role: sql
+
+siteadmin:
+  hostname: siteadmin.rmc2
+  url: http://siteadmin.rmc2.xen.reactrix.com
+  url_username: reactrix
+  url_password: r34ctr!x
+  ssh_username: root
+  ssh_password: root
+  role: siteadmin
