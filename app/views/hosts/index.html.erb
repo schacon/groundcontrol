@@ -1,15 +1,18 @@
-<h1>Listing hosts</h1>
+<h1>Listing Hosts</h1>
 
 <table>
   <tr>
-    <th>String</th>
-    <th>String</th>
+    <th>Hostname</th>
+    <th>URL</th>
+    <th>Role</th>
   </tr>
 
 <% for host in @hosts %>
   <tr>
-    <td><%=h host.string %></td>
-    <td><%=h host.string %></td>
+    <td><%=h host.hostname %></td>
+    <td><%=h host.url %></td>
+    <td><%=h host.role.role rescue nil %></td>
+
     <td><%= link_to 'Show', host %></td>
     <td><%= link_to 'Edit', edit_host_path(host) %></td>
     <td><%= link_to 'Destroy', host, :confirm => 'Are you sure?', :method => :delete %></td>

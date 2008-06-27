@@ -2,20 +2,15 @@
 
 <table>
   <tr>
-    <th>String</th>
-    <th>String</th>
-    <th>String</th>
-    <th>String</th>
-    <th>Integer</th>
+    <th>Section</th>
+    <th>Path</th>
   </tr>
 
 <% for page in @pages %>
   <tr>
-    <td><%=h page.string %></td>
-    <td><%=h page.string %></td>
-    <td><%=h page.string %></td>
-    <td><%=h page.string %></td>
-    <td><%=h page.integer %></td>
+    <td><%=h page.section %></td>
+    <td><%=h page.path %></td>
+
     <td><%= link_to 'Show', page %></td>
     <td><%= link_to 'Edit', edit_page_path(page) %></td>
     <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>

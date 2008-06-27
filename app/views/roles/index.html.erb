@@ -1,19 +1,13 @@
-<h1>Listing roles</h1>
+<h1>Listing Roles</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
-    <th>Klass</th>
-    <th>Code</th>
   </tr>
 
 <% for role in @roles %>
   <tr>
-    <td><%=h role.name %></td>
-    <td><%=h role.description %></td>
-    <td><%=h role.klass %></td>
-    <td><%=h role.code %></td>
+    <td><%=h role.role %></td>
     <td><%= link_to 'Show', role %></td>
     <td><%= link_to 'Edit', edit_role_path(role) %></td>
     <td><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -23,4 +17,4 @@
 
 <br />
 
-<%= link_to 'New role', new_role_path %>
+<%= link_to 'New Role', new_role_path %>

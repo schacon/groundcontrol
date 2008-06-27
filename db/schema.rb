@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080626230629) do
+ActiveRecord::Schema.define(:version => 20080627004904) do
 
   create_table "excercises", :force => true do |t|
     t.integer  "host_id",    :limit => 11
@@ -26,7 +26,11 @@ ActiveRecord::Schema.define(:version => 20080626230629) do
   create_table "hosts", :force => true do |t|
     t.string  "hostname"
     t.string  "url"
-    t.integer "role_id",  :limit => 11
+    t.integer "role_id",      :limit => 11
+    t.string  "url_username"
+    t.string  "url_password"
+    t.string  "ssh_username"
+    t.string  "ssh_password"
   end
 
   create_table "pages", :force => true do |t|
