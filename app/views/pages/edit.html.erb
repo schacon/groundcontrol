@@ -1,0 +1,32 @@
+<h1>Editing page</h1>
+
+<% form_for(@page) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :string %><br />
+    <%= f.text_field :string %>
+  </p>
+  <p>
+    <%= f.label :string %><br />
+    <%= f.text_field :string %>
+  </p>
+  <p>
+    <%= f.label :string %><br />
+    <%= f.text_field :string %>
+  </p>
+  <p>
+    <%= f.label :string %><br />
+    <%= f.text_field :string %>
+  </p>
+  <p>
+    <%= f.label :integer %><br />
+    <%= f.text_field :integer %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @page %> |
+<%= link_to 'Back', pages_path %>
