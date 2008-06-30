@@ -1,0 +1,11 @@
+<h1>Running Exercise</h1>
+
+<div id="exercise">
+<%= render :partial => 'exercise' %>
+</div>
+
+<script>
+var refreshId = setInterval(function() {
+     $('#exercise').load('/hosts/exercise/<%= @exercise.id %>');
+}, 3000);
+</script>

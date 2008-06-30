@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 require File.join(File.dirname(__FILE__), '..', 'config', 'environment')
 
-host_id = ARGV[0]
-host = Host.find(host_id)
+ex_id = ARGV[0]
 
-exercise = Exercise.create(:host => host)
+exercise = Exercise.find(ex_id)
+host = exercise.host
 
 opts = {
         :login => '/login/login',

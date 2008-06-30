@@ -32,7 +32,7 @@
 		<h2 class="title">Performance Tests</h2>
 		
 		<% @host.exercises.recent.each do |ex| %>
-			<%= ex.created_at %>
+			<%= link_to ex.created_at, :action => 'show_exercise', :id => ex.id %>
 			<%= ex.samples.size %><br/>
 		<% end %>
 		

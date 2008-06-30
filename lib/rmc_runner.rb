@@ -61,9 +61,7 @@ class RmcRunner
 
       agent = WWW::Mechanize.new    
       agent.read_timeout = 15.0 # set a 15 second timeout
-      
-      puts user_message(user, "user #{user}")
-      
+            
       login_agent(agent)
       variables = {}    
 
@@ -127,7 +125,7 @@ class RmcRunner
       sample.save
     end
     
-    sample
+    return [sample, variables]
   end
   
 end

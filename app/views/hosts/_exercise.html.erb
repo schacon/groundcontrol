@@ -1,0 +1,24 @@
+<table class="long data">
+	<tr>
+		<th>Path</th>
+		<th>Response</th>
+		<th>User</th>
+		<th>Time</th>
+		<th>Page Size</th>
+		<th>Memory</th>
+	</tr>
+<% @exercise.samples.rev.each do |sample| %>
+	<tr class="<%= sample.passed ? 'pass' : 'fail' %>">
+		<td><%= sample.page.path rescue nil %></td>
+		<td><%= sample.response %></td>
+		<td><%= sample.user %></td>
+		<td class="<%= sample.time < 1 ? 'good' : 'bad' rescue nil %>"><%= sample.time %></td>
+		<td><%= sample.page_size %></td>
+		<td class="<%= sample.memory < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.memory %></td>
+	</tr>
+<% end %>
+</table>
+
+<br/><br/>
+<small><%= Time.now %></small>
+
