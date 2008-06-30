@@ -1,16 +1,17 @@
-<h1>Listing Roles</h1>
+<h1>Roles</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
-
+<table class="data long">
+	<tr>
+		<th>Role</th>
+		<th>Hosts</th>
+		<th>Pages</th>
+	</tr>
+	
 <% for role in @roles %>
   <tr>
-    <td><%=h role.role %></td>
-    <td><%= link_to 'Show', role %></td>
-    <td><%= link_to 'Edit', edit_role_path(role) %></td>
-    <td><%= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to role.role, role %></td>
+    <td><%= role.hosts.count %></td>
+    <td><%= role.pages.count %></td>
   </tr>
 <% end %>
 </table>

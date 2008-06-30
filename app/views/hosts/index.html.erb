@@ -1,21 +1,19 @@
-<h1>Listing Hosts</h1>
+<h1>Hosts</h1>
 
-<table>
+<table class="long data">
   <tr>
     <th>Hostname</th>
     <th>URL</th>
     <th>Role</th>
+    <th>Performance Runs</th>
   </tr>
 
 <% for host in @hosts %>
   <tr>
-    <td><%=h host.hostname %></td>
+    <td><%= link_to host.hostname, host %></td>
     <td><%=h host.url %></td>
     <td><%=h host.role.role rescue nil %></td>
-
-    <td><%= link_to 'Show', host %></td>
-    <td><%= link_to 'Edit', edit_host_path(host) %></td>
-    <td><%= link_to 'Destroy', host, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h host.exercises.count %></td>
   </tr>
 <% end %>
 </table>

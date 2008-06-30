@@ -1,4 +1,4 @@
 class Host < ActiveRecord::Base
   belongs_to :role
-  has_many :excercises
+  has_many :exercises, :order => 'created_at DESC'
 end

@@ -1,4 +1,14 @@
 class HostsController < ApplicationController
+  
+  def run_exercise
+    if @host = Host.find(params[:id])
+      out = Bj.submit "./jobs/performance_test.rb #{@host.id}"
+      puts out.inspect
+    else
+      redirect_to :action => 'index'
+    end
+  end
+  
   # GET /hosts
   # GET /hosts.xml
   def index

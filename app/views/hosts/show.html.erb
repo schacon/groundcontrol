@@ -1,13 +1,53 @@
-<p>
-  <b>Hostname:</b>
-  <%=h @host.hostname %>
-</p>
+<h1><%=h @host.hostname %> (<%= @host.role.role %>)</h1>
+<br/>
 
-<p>
-  <b>Url:</b>
-  <%=h @host.url %>
-</p>
+<table class="long">
+	<tr><td width="40%" valign="top">
+		
+		<table class="data">
+		  <tr>
+				<th>URL</th>
+				<td><%=h @host.url %></td>
+			</tr>
+		  <tr>
+				<th>URL User</th>
+				<td><%=h @host.url_username %></td>
+			</tr>
+		  <tr>
+				<th>URL Pass</th>
+				<td><%=h @host.url_password %></td>
+			</tr>
+		  <tr>
+				<th>SSH User</th>
+				<td><%=h @host.ssh_username %></td>
+			</tr>
+		  <tr>
+				<th>SSH Pass</th>
+				<td><%=h @host.ssh_password %></td>
+			</tr>
+		</table>
+	</td><td width="60%" valign="top">
+		
+		<div class="options"><a href="/hosts/run_exercise/<%= @host.id %>">run tests</a></div>
+		<h2 class="title">Performance Tests</h2>
+		
+		<% @host.exercises.recent.each do |ex| %>
+			<%= ex.created_at %>
+			<%= ex.samples.size %><br/>
+		<% end %>
+		
+		<br/>
+		
+		<div class="options">[run tests]</div>
+		<h2 class="title">Functional Tests</h3>
+			
+		(no tests)
+		
+	</td></tr>
+</table>
 
+<br/>
 
+<%= link_to 'Back', hosts_path %> |
 <%= link_to 'Edit', edit_host_path(@host) %> |
-<%= link_to 'Back', hosts_path %>
+<%= link_to 'Destroy', @host, :confirm => 'Are you sure?', :method => :delete %>

@@ -6,6 +6,7 @@ body, p, ol, ul, td {
 strong { font-weight: bold; }
 .header { padding: 10px 5px; }
 h1 { font-size: 1.5em; }
+p { padding: 10px 0; }
 
 .appbar { padding: 10px 5px; background: #258; margin-top: 5px; }
 .appbar ul li { display: inline; padding: 0 10px; }
@@ -17,6 +18,7 @@ h1 { font-size: 1.5em; }
 .reports #reports a { font-weight: bold; color: #fff; }
 
 .main { padding: 5px; margin-bottom: 10px;}
+
 .speech { font-size: 90%; color: #000; margin-top: 5px; margin-bottom: 5px; }
 .speech p { margin-bottom: 10px; }
 #ft { padding: 8px; background: #eee; 
@@ -48,14 +50,14 @@ h3 { font-size: 1.1em; font-weight: bold; padding: 3px;}
 .commitFile { background: #eee; padding: 3px; font-weight: bold;}
 #searchBox { padding: 5px; text-align: center;}
 
-.project h2 { background: #eee; padding: 3px;}
-.project h2 a { margin-left: 10px; font-size: 70%; color: #338 !important;}
+h2.title { background: #eee; padding: 3px;}
+h2.title a { margin-left: 10px; font-size: 70%; color: #338 !important;}
 
 table.mini tr td { font-size: 90%; padding: 2px;}
 table.listing tr { border-bottom: 1px solid #eee; margin-bottom: 3px; }
 table.layout tr td { padding: 4px 8px; }
-table.data tr th { font-weight: bold; background: #eee; padding: 2px;}
-table.data tr td { padding: 2px;}
+table.data tr th { font-weight: bold; background: #eee; padding: 4px;}
+table.data tr td { padding: 4px;}
 table.padded tr td { padding: 10px; }
 table.long { width:99%; }
 table.form tr th {

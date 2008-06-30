@@ -12,6 +12,22 @@
     <%= f.text_field :url %>
   </p>
   <p>
+    <%= f.label :url_username %><br />
+    <%= f.text_field :url_username %>
+  </p>
+  <p>
+    <%= f.label :url_password %><br />
+    <%= f.text_field :url_password %>
+  </p>
+  <p>
+    <%= f.label :ssh_username %><br />
+    <%= f.text_field :ssh_username %>
+  </p>
+  <p>
+    <%= f.label :ssh_password %><br />
+    <%= f.text_field :ssh_password %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>

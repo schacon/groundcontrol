@@ -1,7 +1,26 @@
-<p>
-  <b>Role:</b>
-  <%=h @role.role %>
-</p>
+<h1><%=h @role.role %></h1>
+
+<br/>
+
+<table class="long">
+	<tr><td width="50%" valign="top">
+		
+		<h2 class="title">Hosts</h2>
+		
+		<% @role.hosts.each do |host| %>
+			<%= link_to host.hostname, host %><br/>
+		<% end %>
+
+	</td><td width="50%" valign="top">
+		<h2 class="title">Pages</h2>
+
+		<% @role.pages.each do |page| %>
+			<%= page.path %><br/>
+		<% end %>
+		
+	</td></tr>
+</table>
+
 
 
 <%= link_to 'Edit', edit_role_path(@role) %> |
