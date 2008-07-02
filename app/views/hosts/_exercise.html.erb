@@ -7,6 +7,7 @@
 		<th>Page Size</th>
 		<th>Memory</th>
 	</tr>
+
 <% @exercise.samples.rev.each do |sample| %>
 	<tr class="<%= sample.passed ? 'pass' : 'fail' %>">
 		<td><%= sample.page.path rescue nil %></td>

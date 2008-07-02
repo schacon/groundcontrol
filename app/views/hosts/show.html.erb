@@ -1,14 +1,11 @@
 <h1><%=h @host.hostname %> (<%= @host.role.role %>)</h1>
+<h2><%=h @host.url %></h2>
 <br/>
 
 <table class="long">
 	<tr><td width="40%" valign="top">
 		
 		<table class="data">
-		  <tr>
-				<th>URL</th>
-				<td><%=h @host.url %></td>
-			</tr>
 		  <tr>
 				<th>URL User</th>
 				<td><%=h @host.url_username %></td>
@@ -31,10 +28,23 @@
 		<div class="options"><a href="/hosts/run_exercise/<%= @host.id %>">run tests</a></div>
 		<h2 class="title">Performance Tests</h2>
 		
+		<table class="long data">
+			<tr>
+				<th>Num</th>
+				<th>When</th>
+				<th>Samples</th>
+				<th colspan="2">Pass Rate</th>
+			</tr>
 		<% @host.exercises.recent.each do |ex| %>
-			<%= link_to ex.created_at, :action => 'show_exercise', :id => ex.id %>
-			<%= ex.samples.size %><br/>
+			<tr>
+				<td><%= link_to "Test #{ex.id}", :action => 'show_exercise', :id => ex.id %></td>
+				<td><%= time_ago_in_words(ex.created_at) %></td>
+				<td><%= ex.sample_size %></td>
+				<td><%= ex.pass_fraction %></td>
+				<td><%= ex.pass_percent %></td>
+			</tr>
 		<% end %>
+		</table>
 		
 		<br/>
 		

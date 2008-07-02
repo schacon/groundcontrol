@@ -1,5 +1,25 @@
+<div class="options">
+	<a href="#" id="show_fails">Show Only Fails</a>
+	<a href="#" id="show_all">Show All</a>
+</div>
+
 <h1>Test Results</h1>
+<br/>
 
 <div id="exercise">
 <%= render :partial => 'exercise' %>
 </div>
+
+<script>
+$(function() {
+	$('#show_fails').click(function() {
+		$('.pass').hide();
+	})
+	
+	$('#show_all').click(function() {
+		$('.pass').show();
+		$('.fail').show();
+	})
+	
+})
+</script>
