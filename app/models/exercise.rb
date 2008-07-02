@@ -20,4 +20,11 @@ class Exercise < ActiveRecord::Base
     ((passes.to_f / size.to_f) * 100.0).round if size > 0
   end
   
+  def avg_time
+    if sample_size > 0
+      total = samples.inject(1) {|total, n| total += n.time if n.time }
+      return total / sample_size if total
+    end
+  end
+  
 end
