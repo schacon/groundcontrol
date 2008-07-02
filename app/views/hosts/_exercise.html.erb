@@ -14,8 +14,8 @@
 		<td><%= sample.response %></td>
 		<td><%= sample.user %></td>
 		<td class="<%= sample.time < 1 ? 'good' : 'bad' rescue nil %>"><%= sample.time %></td>
-		<td><%= sample.page_size %></td>
-		<td class="<%= sample.memory < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.memory %></td>
+		<td align="right"><%= sample.page_size %></td>
+		<td align="right" class="<%= sample.memory < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.memory %></td>
 	</tr>
 <% end %>
 </table>
