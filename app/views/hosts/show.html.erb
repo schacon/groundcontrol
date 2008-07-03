@@ -41,7 +41,7 @@
 				<td><%= link_to "Test #{ex.id}", :action => 'show_exercise', :id => ex.id %></td>
 				<td><%= time_ago_in_words(ex.created_at) %> ago</td>
 				<td><%= ex.sample_size %></td>
-				<td><%= number_with_precision ex.avg_time, 2 %></td>
+				<td><%= number_with_precision ex.avg_time, 2 rescue nil %></td>
 				<td><%= ex.pass_fraction %></td>
 				<td><%= ex.pass_percent %></td>
 			</tr>
