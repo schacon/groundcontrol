@@ -5,20 +5,16 @@ describe "/roles/show.html.erb" do
   
   before(:each) do
     @role = mock_model(Role)
-    @role.stub!(:name).and_return("MyString")
-    @role.stub!(:description).and_return("MyText")
-    @role.stub!(:klass).and_return("MyString")
-    @role.stub!(:code).and_return("MyText")
+    @role.stub!(:role).and_return("Test Role")
+    @role.stub!(:hosts).and_return([])
+    @role.stub!(:pages).and_return([])
 
     assigns[:role] = @role
   end
 
   it "should render attributes in <p>" do
     render "/roles/show.html.erb"
-    response.should have_text(/MyString/)
-    response.should have_text(/MyText/)
-    response.should have_text(/MyString/)
-    response.should have_text(/MyText/)
+    response.should have_text(/Test Role/)
   end
 end
 

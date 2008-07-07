@@ -1,13 +1,4 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-  description: MyText
-  klass: MyString
-  code: MyText
-
-two:
-  name: MyString
-  description: MyText
-  klass: MyString
-  code: MyText
+web_app1:
+  role: "Web App Instance"
+client_app1:
+  role: "Client App Instance"

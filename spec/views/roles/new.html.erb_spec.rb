@@ -6,10 +6,10 @@ describe "/roles/new.html.erb" do
   before(:each) do
     @role = mock_model(Role)
     @role.stub!(:new_record?).and_return(true)
-    @role.stub!(:name).and_return("MyString")
-    @role.stub!(:description).and_return("MyText")
-    @role.stub!(:klass).and_return("MyString")
-    @role.stub!(:code).and_return("MyText")
+    @role.stub!(:role).and_return("Test Role")
+    @role.stub!(:hosts).and_return([])
+    @role.stub!(:pages).and_return([])
+    
     assigns[:role] = @role
   end
 
@@ -17,10 +17,7 @@ describe "/roles/new.html.erb" do
     render "/roles/new.html.erb"
     
     response.should have_tag("form[action=?][method=post]", roles_path) do
-      with_tag("input#role_name[name=?]", "role[name]")
-      with_tag("textarea#role_description[name=?]", "role[description]")
-      with_tag("input#role_klass[name=?]", "role[klass]")
-      with_tag("textarea#role_code[name=?]", "role[code]")
+      with_tag("input#role_role[name=?]", "role[role]")
     end
   end
 end

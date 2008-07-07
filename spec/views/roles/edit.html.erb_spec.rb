@@ -5,10 +5,8 @@ describe "/roles/edit.html.erb" do
   
   before do
     @role = mock_model(Role)
-    @role.stub!(:name).and_return("MyString")
-    @role.stub!(:description).and_return("MyText")
-    @role.stub!(:klass).and_return("MyString")
-    @role.stub!(:code).and_return("MyText")
+    @role.stub!(:role).and_return("Test Role A")
+
     assigns[:role] = @role
   end
 
@@ -16,10 +14,7 @@ describe "/roles/edit.html.erb" do
     render "/roles/edit.html.erb"
     
     response.should have_tag("form[action=#{role_path(@role)}][method=post]") do
-      with_tag('input#role_name[name=?]', "role[name]")
-      with_tag('textarea#role_description[name=?]', "role[description]")
-      with_tag('input#role_klass[name=?]', "role[klass]")
-      with_tag('textarea#role_code[name=?]', "role[code]")
+      with_tag('input#role_role[name=?]', "role[role]")
     end
   end
 end
