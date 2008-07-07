@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :pages
+
+  map.resources :pages
   map.resources :hosts
   map.resources :roles
 
