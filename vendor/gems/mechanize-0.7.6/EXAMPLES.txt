@@ -1,0 +1,124 @@
+= WWW::Mechanize examples
+
+== Google
+  require 'rubygems'
+  require 'mechanize'
+  
+  agent = WWW::Mechanize.new
+  agent.user_agent_alias = 'Mac Safari'
+  page = agent.get("http://www.google.com/")
+  search_form = page.forms.with.name("f").first
+  search_form.q = "Hello"
+  search_results = agent.submit(search_form)
+  puts search_results.body
+
+== Rubyforge
+  require 'mechanize'
+  
+  agent = WWW::Mechanize.new
+  page = agent.get('http://rubyforge.org/')
+  link = page.links.text(/Log In/)
+  page = agent.click(link)
+  form = page.forms[1]
+  form.form_loginname = ARGV[0]
+  form.form_pw = ARGV[1]
+  page = agent.submit(form, form.buttons.first)
+  
+  puts page.body
+
+== File Upload
+This example uploads one image as two different images to flickr.
+
+ require 'rubygems'
+ require 'mechanize'
+ 
+ agent = WWW::Mechanize.new
+ 
+ # Get the flickr sign in page
+ page  = agent.get('http://flickr.com/signin/flickr/')
+ 
+ # Fill out the login form
+ form  = page.forms.name('flickrloginform').first
+ form.email = ARGV[0]
+ form.password = ARGV[1]
+ page  = agent.submit(form)
+ 
+ # Go to the upload page
+ page  = agent.click page.links.text('Upload')
+ 
+ # Fill out the form
+ form  = page.forms.action('/photos_upload_process.gne').first
+ form.file_uploads.name('file1').first.file_name = ARGV[2]
+ agent.submit(form)
+  
+== Pluggable Parsers
+Lets say you want html pages to automatically be parsed with Rubyful Soup.
+This example shows you how:
+
+  require 'rubygems'
+  require 'mechanize'
+  require 'rubyful_soup'
+
+  class SoupParser < WWW::Mechanize::Page
+    attr_reader :soup
+    def initialize(uri = nil, response = nil, body = nil, code = nil)
+      @soup = BeautifulSoup.new(body)
+      super(uri, response, body, code)
+    end
+  end
+
+  agent = WWW::Mechanize.new
+  agent.pluggable_parser.html = SoupParser
+
+Now all HTML pages will be parsed with the SoupParser class, and automatically
+give you access to a method called 'soup' where you can get access to the
+Beautiful Soup for that page.
+
+== Using a proxy
+
+  require 'rubygems'
+  require 'mechanize'
+  
+  agent = WWW::Mechanize.new
+  agent.set_proxy('localhost', '8000')
+  page = agent.get(ARGV[0])
+  puts page.body
+
+== The transact method
+
+transact runs the given block and then resets the page history. I.e. after the
+block has been executed, you're back at the original page; no need count how
+many times to call the back method at the end of a loop (while accounting for
+possible exceptions).
+
+This example also demonstrates subclassing Mechanize.
+
+  require 'mechanize'
+
+  class TestMech < WWW::Mechanize
+    def process
+      get 'http://rubyforge.org/'
+      search_form = page.forms.first
+      search_form.words = 'WWW'
+      submit search_form
+
+      page.links.with.href( %r{/projects/} ).each do |link|
+        next if link.href =~ %r{/projects/support/}
+
+        puts 'Loading %-30s %s' % [link.href, link.text]
+        begin
+          transact do
+            click link
+            # Do stuff, maybe click more links.
+          end
+          # Now we're back at the original page.
+
+        rescue => e
+          $stderr.puts "#{e.class}: #{e.message}"
+        end
+      end
+    end
+  end
+
+  TestMech.new.process
+
