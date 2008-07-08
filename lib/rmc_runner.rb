@@ -67,7 +67,7 @@ class RmcRunner
 
       1.upto(hits_per) do |hit|
         @options[:host].role.pages.each do |page|
-          route = page.path
+          route = page.uri_pattern
           if m = /%(.*?)%/.match(route)
             arr = variables[m[1]]
             value = arr[rand(arr.size)].first rescue ''
