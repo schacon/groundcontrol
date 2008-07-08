@@ -3,7 +3,7 @@
 <br/>
 
 <table class="long">
-	<tr><td width="40%" valign="top">
+	<tr><td width="30%" valign="top">
 		
 		<table class="data">
 		  <tr>
@@ -23,7 +23,7 @@
 				<td><%=h @host.ssh_password %></td>
 			</tr>
 		</table>
-	</td><td width="60%" valign="top">
+	</td><td width="70%" valign="top">
 		
 		<div class="options"><a href="/hosts/run_exercise/<%= @host.id %>">run tests</a></div>
 		<h2 class="title">Performance Tests</h2>
@@ -33,13 +33,16 @@
 				<th>Num</th>
 				<th>When</th>
 				<th>Samples</th>
-				<th>Avg Time</th>
+				<th>Time</th>
 				<th colspan="2">Pass Rate</th>
 			</tr>
 		<% @host.exercises.recent.each do |ex| %>
 			<tr>
-				<td><%= link_to "Test #{ex.id}", :action => 'show_exercise', :id => ex.id %></td>
-				<td><%= time_ago_in_words(ex.created_at) %> ago</td>
+				<td>
+					<%= link_to 'Stats', :action => 'show_stats', :id => ex.id %>
+					<%= link_to "Test #{ex.id}", :action => 'show_exercise', :id => ex.id %>
+				</td>
+				<td><small><%= time_ago_in_words(ex.created_at) %> ago</small></td>
 				<td><%= ex.sample_size %></td>
 				<td><%= number_with_precision ex.avg_time, 2 rescue nil %></td>
 				<td><%= ex.pass_fraction %></td>
