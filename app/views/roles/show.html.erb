@@ -15,7 +15,7 @@
 		<h2 class="title">Pages</h2>
 
 		<% @role.pages.each do |page| %>
-			<%= link_to page.path, page_url(page) %><br/>
+			<%= link_to page.uri_pattern, page_url(page) %><br/>
 		<% end %>
 		
 	</td></tr>

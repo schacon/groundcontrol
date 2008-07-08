@@ -51,17 +51,18 @@ Spec::Runner.configure do |config|
   # creates a general use Page model with its basic methods stubbed out
   def mock_page_model()
     page = mock_model(Page)
-    page.stub!(:path).and_return("/test/path/a")
+    page.stub!(:uri_pattern).and_return("/test/path/%display_id%/edit")
+    page.stub!(:uri_actual).and_return("/test/path/1/edit")
     page.stub!(:assertions).and_return("test assertion")
-    page.stub!(:variables).and_return("test variables")
-    page.stub!(:section).and_return("test section")
+    page.stub!(:variables).and_return("display_id")
+    page.stub!(:section).and_return("display")
     page
   end
   
   # asserts that the basic form fields are present for a Page form.
   # intended to be called from within a "response.should have_tag("form[action=?][method=post]", pages_path) do" block
   def verify_form_for_page
-    with_tag('input#page_path[name=?]',       "page[path]")
+    with_tag('input#page_uri_pattern[name=?]',"page[uri_pattern]")
     with_tag('input#page_assertions[name=?]', "page[assertions]")
     with_tag('input#page_variables[name=?]',  "page[variables]")
     with_tag('input#page_section[name=?]',    "page[section]")
