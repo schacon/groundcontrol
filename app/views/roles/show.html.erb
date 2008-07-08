@@ -15,7 +15,7 @@
 		<h2 class="title">Pages</h2>
 
 		<% @role.pages.each do |page| %>
-			<%= page.path %><br/>
+			<%= link_to page.path, page_url(page) %><br/>
 		<% end %>
 		
 	</td></tr>
@@ -24,4 +24,4 @@
 
 
 <%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<%= link_to 'List', roles_path %>

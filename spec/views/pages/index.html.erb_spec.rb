@@ -4,9 +4,8 @@ describe "/pages/index.html.erb" do
   include PagesHelper
   
   before(:each) do
-    page_98 = mock_model(Page)
-    page_99 = mock_model(Page)
-
+    page_98         = mock_page_model()
+    page_99         = mock_page_model()
     assigns[:pages] = [page_98, page_99]
   end
 

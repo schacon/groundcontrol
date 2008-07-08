@@ -2,10 +2,10 @@
 
 <% form_for(@page) do |f| %>
   <%= f.error_messages %>
-
+  <%= render :partial => "page_form", :locals => {:f => f} %>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', pages_path %>
+<%= link_to 'List', pages_path %>

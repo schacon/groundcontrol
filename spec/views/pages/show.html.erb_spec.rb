@@ -4,8 +4,7 @@ describe "/pages/show.html.erb" do
   include PagesHelper
   
   before(:each) do
-    @page = mock_model(Page)
-
+    @page = mock_page_model()
     assigns[:page] = @page
   end
 

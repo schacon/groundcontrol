@@ -1,3 +1,26 @@
+<h1 id="viewing_page">Viewing Page <%= @page.id %></h1>
+
+
+<table class="data">
+  <tr>
+	<th>Path</th>
+	<td><%=h @page.path %></td>
+  </tr>
+  <tr>
+	<th>Assetions</th>
+	<td><%=h @page.assertions %></td>
+  </tr>
+  <tr>
+	<th>Variables</th>
+	<td><%=h @page.variables %></td>
+  </tr>
+  <tr>
+	<th>Section</th>
+	<td><%=h @page.section %></td>
+  </tr>
+</table>
+
+
 
 <%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'List', pages_path %>
