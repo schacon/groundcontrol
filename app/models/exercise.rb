@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20080627214910
+#
+# Table name: exercises
+#
+#  id         :integer(11)     not null, primary key
+#  host_id    :integer(11)     
+#  passed     :integer(11)     
+#  failed     :integer(11)     
+#  users      :integer(11)     
+#  created_at :datetime        
+#  updated_at :datetime        
+#
+
 class Exercise < ActiveRecord::Base
   belongs_to :host
   has_many :samples
