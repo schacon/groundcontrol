@@ -1,6 +1,6 @@
 <h1>Listing pages</h1>
 
-<table>
+<table class="long data">
   <tr>
   </tr>
 
@@ -17,3 +17,9 @@
 <br />
 
 <%= link_to 'New page', new_page_path %>
+
+<script>
+$(function() {
+	$('tr:even').addClass('even');
+})
+</script>

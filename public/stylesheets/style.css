@@ -79,6 +79,7 @@ table.form tr td {
 table tr.fail td { background: #faa; color: #633;}
 table tr.pass td.bad { color: #b66;}
 table tr.pass td.good { color: #393;}
+table tr.even td { background: #eee;}
 
 h2#backlog { margin-top: 15px; }
 

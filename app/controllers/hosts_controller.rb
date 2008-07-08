@@ -18,6 +18,27 @@ class HostsController < ApplicationController
     @exercise = Exercise.find(params[:id])
   end
   
+  #<Sample id: 3280, exercise_id: 45, page_id: 1, passed: true, 
+  # user: nil, response: 200, time: 3.4905, created_at: "2008-07-07 23:04:35", 
+  # updated_at: "2008-07-07 23:04:39", page_data: nil, 
+  # page_size: 18712, memory: 5868.0>
+  
+  def show_stats
+    @exercise = Exercise.find(params[:id])
+    @data = {}
+    
+    @exercise.samples.each do |sample|
+      pid = sample.page_id
+      @data[pid] ||= {:count => 0, :memory => 0, :time => 0, 
+                      :memory_avg => 0, :time_avg => 0, :page => sample.page }
+      @data[pid][:count] += 1
+      @data[pid][:memory] += sample.memory.to_i
+      @data[pid][:time] += sample.time.to_f
+      @data[pid][:memory_avg] = (@data[pid][:memory] / @data[pid][:count])
+      @data[pid][:time_avg] = (@data[pid][:time] / @data[pid][:count])
+    end
+  end
+
   def exercise
     @exercise = Exercise.find(params[:id])
     render :partial => 'exercise'
