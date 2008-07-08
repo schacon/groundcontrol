@@ -6,6 +6,14 @@ web_page1:
   variables: "display_id"
   section: "admin"
   order: 1
+web_page2:
+  role: web_app1
+  uri_pattern: "/web/app/%display_id%/edit"
+  uri_actual: "/web/app/1/edit"
+  assertions: "assert_equal"
+  variables: "display_id"
+  section: "admin"
+  order: 2
 client_page1:
   role: client_app1
   uri_pattern: "/client/app/%display_id%"
@@ -13,4 +21,4 @@ client_page1:
   assertions: "assert_equal"
   variables: "display_id"
   section: "displays"
-  order: 2
+  order: 3
