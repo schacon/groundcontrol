@@ -1,15 +1,16 @@
 # == Schema Information
-# Schema version: 20080627214910
+# Schema version: 20080708165855
 #
 # Table name: pages
 #
-#  id         :integer(11)     not null, primary key
-#  path       :string(255)     
-#  role_id    :integer(11)     
-#  order      :integer(11)     
-#  assertions :string(255)     
-#  variables  :string(255)     
-#  section    :string(255)     
+#  id          :integer(11)     not null, primary key
+#  uri_pattern :string(255)     
+#  role_id     :integer(11)     
+#  order       :integer(11)     
+#  assertions  :string(255)     
+#  variables   :string(255)     
+#  section     :string(255)     
+#  uri_actual  :string(255)     
 #
 
 class Page < ActiveRecord::Base

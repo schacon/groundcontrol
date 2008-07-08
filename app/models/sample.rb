@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20080627214910
+# Schema version: 20080708165855
 #
 # Table name: samples
 #
