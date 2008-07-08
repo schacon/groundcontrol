@@ -4,6 +4,6 @@ class RemoveSamples < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :exercises, :samples
+    add_column :exercises, :samples, :integer
   end
 end
