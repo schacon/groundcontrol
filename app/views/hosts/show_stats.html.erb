@@ -1,0 +1,37 @@
+<h1>Test Stats</h1>
+<br/>
+
+<h2>Worst Memory</h2>
+<table class="long">
+<% @data.sort { |a, b| b[1][:memory_avg] <=> a[1][:memory_avg] }[0, 5].each do |pid, page| %>
+	<tr>
+		<td><%= page[:page].path %></td>
+		<td><%= page[:memory_avg] %></td>
+		<td><%= page[:time_avg] %></td>
+	</tr>
+<% end %>
+</table>
+<br/>
+
+<h2>Slowest Pages</h2>
+<table class="long">
+<% @data.sort { |a, b| b[1][:time_avg] <=> a[1][:time_avg] }[0, 5].each do |pid, page| %>
+	<tr>
+		<td><%= page[:page].path %></td>
+		<td><%= page[:memory_avg] %></td>
+		<td><%= page[:time_avg] %></td>
+	</tr>
+<% end %>
+</table>
+<br/>
+
+<h2>Page Stats</h2>
+<table class="long">
+<% @data.sort.each do |pid, page| %>
+	<tr>
+		<td><%= page[:page].path %></td>
+		<td><%= page[:memory_avg] %></td>
+		<td><%= page[:time_avg] %></td>
+	</tr>
+<% end %>
+</table>
