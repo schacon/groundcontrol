@@ -74,6 +74,7 @@ class RmcRunner
             route = route.gsub("%#{m[1]}%", value)
           end
           sample, variables = hit_page(agent, route, variables, page)
+          page.update_uri(route)
         end
       end
       

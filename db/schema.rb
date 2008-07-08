@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080627214910) do
+ActiveRecord::Schema.define(:version => 20080708165855) do
 
   create_table "bj_config", :primary_key => "bj_config_id", :force => true do |t|
     t.text "hostname"
@@ -79,12 +79,13 @@ ActiveRecord::Schema.define(:version => 20080627214910) do
   end
 
   create_table "pages", :force => true do |t|
-    t.string  "path"
-    t.integer "role_id",    :limit => 11
-    t.integer "order",      :limit => 11
+    t.string  "uri_pattern"
+    t.integer "role_id",     :limit => 11
+    t.integer "order",       :limit => 11
     t.string  "assertions"
     t.string  "variables"
     t.string  "section"
+    t.string  "uri_actual"
   end
 
   add_index "pages", ["role_id"], :name => "index_pages_on_role_id"

@@ -15,4 +15,9 @@
 class Page < ActiveRecord::Base
   belongs_to :role
   has_many :samples
+  
+  # accepts the actual uri and saves itself to the database. returns true on success
+  def update_uri(p)
+    update_attribute(:uri_actual, p)
+  end
 end
