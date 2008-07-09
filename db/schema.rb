@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(:version => 20080708165855) do
     t.string  "assertions"
     t.string  "variables"
     t.string  "section"
-    t.string  "uri_actual"
   end
 
   add_index "pages", ["role_id"], :name => "index_pages_on_role_id"
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20080708165855) do
     t.string   "page_data"
     t.integer  "page_size",   :limit => 11
     t.float    "memory"
+    t.string   "page_uri"
   end
 
   add_index "samples", ["exercise_id", "page_id"], :name => "index_samples_on_excercise_id_and_page_id"

@@ -21,16 +21,5 @@ describe "Page create" do
     @page.should respond_to(:variables)
     @page.should respond_to(:section)
     @page.should respond_to(:uri_pattern)
-    @page.should respond_to(:uri_actual)
-  end
-end
-  
-describe "Page update" do
-  it "should have its update_uri method called and its uri_actual updated" do
-    new_path = "/a/test/for/the/update_real_path/method"
-    @page = pages(:web_page1)
-    @page.uri_actual.should_not       == new_path
-    @page.update_uri(new_path).should == true
-    @page.uri_actual.should           == new_path
   end
 end
