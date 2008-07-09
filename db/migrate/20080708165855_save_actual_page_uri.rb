@@ -1,4 +1,4 @@
-class ChangePagePath < ActiveRecord::Migration
+class SaveActualPageUri < ActiveRecord::Migration
   def self.up
     rename_column :pages,   :path,        :uri_pattern
     add_column    :samples, :page_uri,    :string,      :limit => 255
