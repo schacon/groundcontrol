@@ -10,7 +10,6 @@
 #  assertions  :string(255)     
 #  variables   :string(255)     
 #  section     :string(255)     
-#  uri_actual  :string(255)     
 #
 
 class Page < ActiveRecord::Base

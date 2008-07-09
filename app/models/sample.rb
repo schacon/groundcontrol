@@ -15,6 +15,7 @@
 #  page_data   :string(255)     
 #  page_size   :integer(11)     
 #  memory      :float           
+#  page_uri    :string(255)     
 #
 
 class Sample < ActiveRecord::Base
