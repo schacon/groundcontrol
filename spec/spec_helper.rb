@@ -66,4 +66,17 @@ Spec::Runner.configure do |config|
     with_tag('input#page_variables[name=?]',  "page[variables]")
     with_tag('input#page_section[name=?]',    "page[section]")
   end
+  
+  # creates a general use Sample model with its basic methods stubbed out
+  def mock_sample_model()
+    sample = mock_model(Sample)
+    sample.stub!(:passed).and_return(nil)
+    sample.stub!(:response).and_return(nil)
+    sample.stub!(:user).and_return(nil)
+    sample.stub!(:time).and_return(nil)
+    sample.stub!(:page_size).and_return(nil)
+    sample.stub!(:page_uri).and_return(nil)
+    sample.stub!(:memory).and_return(nil)
+    sample
+  end
 end

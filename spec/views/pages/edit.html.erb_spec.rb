@@ -11,7 +11,7 @@ describe "/pages/edit.html.erb" do
   it "should render edit form" do
     render "/pages/edit.html.erb"
     response.should have_tag("form[action=#{page_path(@page)}][method=post]") do
-      verify_form_for_page()
+      with_tag('input#page_section[name=?]',    "page[section]")
     end
   end
 end

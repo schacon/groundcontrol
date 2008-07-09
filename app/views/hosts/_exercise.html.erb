@@ -10,7 +10,7 @@
 
 <% @exercise.samples.rev.each do |sample| %>
 	<tr class="<%= sample.passed ? 'pass' : 'fail' %>">
-		<td><%= sample.page.path rescue nil %></td>
+		<td><%= sample.page_uri %></td>
 		<td><%= sample.response %></td>
 		<td><%= sample.user %></td>
 		<td class="<%= sample.time < 1 ? 'good' : 'bad' rescue nil %>"><%= sample.time %></td>
