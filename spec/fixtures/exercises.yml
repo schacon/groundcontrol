@@ -1,0 +1,5 @@
+ex_1_for_webapp1:
+  host: web_app1_host1
+  passed: t
+  failed: f
+  users: 15

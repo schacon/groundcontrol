@@ -1,0 +1,11 @@
+ex_1_for_webapp1_sample1:
+  page: web_page1
+  exercise: ex_1_for_webapp1
+  passed:
+  user:
+  response:
+  time:
+  page_data:
+  page_size:
+  page_uri:
+  memory:
