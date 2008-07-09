@@ -8,4 +8,9 @@ describe Exercise do
   it "should be valid" do
     @exercise.should be_valid
   end
+  
+  it "should be savable" do
+    @exercise.save       .should equal(true)
+    @exercise.new_record?.should equal(false)
+  end
 end

@@ -11,6 +11,7 @@ describe "Page create" do
   
   it "should be savable" do
     @page.save.should == true
+    @page.new_record?.should equal(false)
   end
   
   it "should respond to its attribute methods" do

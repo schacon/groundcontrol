@@ -8,4 +8,9 @@ describe Role do
   it "should be valid" do
     @role.should be_valid
   end
+  
+  it "should be savable" do
+    @role.save       .should equal(true)
+    @role.new_record?.should equal(false)
+  end
 end
