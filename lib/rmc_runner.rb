@@ -6,11 +6,16 @@ require 'mechanize'
 require 'peach'
 
 class RmcRunner
-  
   def initialize(options)
+    @logger  = options.delete(:logger)
     @options = options
   end
-
+  
+  def logger
+    @logger
+  end
+  private :logger
+  
   def login_agent(agent)
     u = @options[:host].url_username
     p = @options[:host].url_password
@@ -39,7 +44,8 @@ class RmcRunner
   
   def memory_test(route, times = 20)
     
-    agent = WWW::Mechanize.new    
+    agent = WWW::Mechanize.new
+    agent.log = logger unless logger.nil?
     agent.read_timeout = 15.0 # set a 15 second timeout
     login_agent(agent)
     
@@ -87,7 +93,9 @@ class RmcRunner
 
     begin
       start_time = Time.now
-      get_page = agent.get(page_url(route))
+      uri = page_url(route)
+      logger.debug "#{self.class}#hit_page:: attempting to GET: #{uri}" unless logger.nil?
+      get_page = agent.get(uri)
       elapsed = (Time.now - start_time)  # get amount of time taken
 
       if page && page.variables
@@ -106,7 +114,8 @@ class RmcRunner
       puts 'siz: ' + get_page.body.size.to_s
       
       sample.page_size = get_page.body.size
-      sample.response = get_page.response['status'].split(' ').first.to_i rescue nil
+      sample.response = get_page.code.to_i rescue nil
+      logger.debug "#{self.class}#hit_page:: GET response code: #{sample.response}" unless logger.nil?
 
       if page && page.assertions
         # look for assertions  
@@ -116,7 +125,7 @@ class RmcRunner
 
     rescue WWW::Mechanize::ResponseCodeError => e
       puts e.inspect
-      sample.response = get_page.response['status'].split(' ').first.to_i rescue 404
+      sample.response = get_page.code.to_i rescue 404
       elapsed = (Time.now - start_time)  # get amount of time taken
     rescue Timeout::Error          
       elapsed = (Time.now - start_time)  # get amount of time taken

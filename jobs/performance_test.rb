@@ -10,7 +10,8 @@ opts = {
         :login => '/login/login',
         :fields => {:login => 'login', :password => 'password'},
         :host => host,
-        :exercise => exercise
+        :exercise => exercise,
+        :logger => RAILS_DEFAULT_LOGGER
        }
        
        

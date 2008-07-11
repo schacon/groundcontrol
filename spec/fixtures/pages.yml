@@ -1,3 +1,11 @@
+google_com:
+  role: web_site_external
+  uri_pattern: "/"
+  assertions:
+  variables:
+  section:
+  order: 1
+
 web_page1:
   role: web_app1
   uri_pattern: "/web/app/%display_id%"

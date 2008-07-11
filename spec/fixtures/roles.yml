@@ -1,3 +1,17 @@
+web_site_localhost:
+  role: "Web site on localhost"
+web_site_internal:
+  role: "Web site on local network"
+web_site_external:
+  role: "Web site outside of local network"
+
+rmc_localhost:
+  role: "RMC instance on localhost"
+rmc_internal:
+  role: "RMC instance on local network"
+rmc_external:
+  role: "RMC instance outside of local network"
+
 web_app1:
   role: "Web App Instance"
 client_app1:
