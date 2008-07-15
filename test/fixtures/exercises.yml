@@ -1,3 +1,9 @@
+ex_1_for_google:
+  host: google_com
+  passed: t
+  failed: f
+  users: 2
+
 ex_1_for_webapp1:
   host: web_app1_host1
   passed: t

@@ -1,7 +1,7 @@
 google_com:
   role: web_site_external
   uri_pattern: "/"
-  assertions:
+  assertions: "assert_equal"
   variables:
   section:
   order: 1
