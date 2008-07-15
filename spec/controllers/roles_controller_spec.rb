@@ -310,4 +310,38 @@ describe RolesController do
       response.should redirect_to(roles_url)
     end
   end
+  
+  describe "handling XHR POST /roles/edit_page_position/1" do
+    before(:each) do
+      @role = roles(:web_site_external)
+    end
+    
+    def do_edit_page_position
+      xhr :post, :edit_page_position, {
+        :id => @role.id,
+        "page_list" => [ # the id's used here must be Ruby STRINGS
+          pages(:google_com_about)  .id.to_s,
+          pages(:google_com_privacy).id.to_s,
+          pages(:google_com)        .id.to_s
+        ]
+      }
+    end
+    
+    it "should find the role requested" do
+      Role.should_receive(:find).with(@role.id.to_s).and_return(@role)
+      do_edit_page_position
+    end
+    
+    it "should find the role's pages in the expected order" do
+      r = @role
+      r.pages[0].id.should equal(pages(:google_com)        .id)
+      r.pages[1].id.should equal(pages(:google_com_about)  .id)
+      r.pages[2].id.should equal(pages(:google_com_privacy).id)
+      do_edit_page_position
+      r = assigns(:role).reload
+      r.pages[2].id.should equal(pages(:google_com)        .id)
+      r.pages[0].id.should equal(pages(:google_com_about)  .id)
+      r.pages[1].id.should equal(pages(:google_com_privacy).id)
+    end
+  end
 end

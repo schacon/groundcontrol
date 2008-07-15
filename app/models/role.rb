@@ -9,5 +9,5 @@
 
 class Role < ActiveRecord::Base
   has_many :hosts
-  has_many :pages
+  has_many :pages, :order => "position"
 end

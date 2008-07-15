@@ -17,7 +17,7 @@ describe "Page create" do
   it "should respond to its attribute methods" do
     @page.should respond_to(:role_id)
     @page.should respond_to(:role)
-    @page.should respond_to(:order)
+    @page.should respond_to(:position)
     @page.should respond_to(:assertions)
     @page.should respond_to(:variables)
     @page.should respond_to(:section)

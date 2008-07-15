@@ -82,4 +82,14 @@ class RolesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def edit_page_position
+logger.debug "params[:page_list]=#{params[:page_list].class}"
+    @role = Role.find(params[:id])
+    @role.pages.each do |page|
+      page.position = params[:page_list].index(page.id.to_s) + 1
+      page.save
+    end
+    render :nothing => true
+  end
 end

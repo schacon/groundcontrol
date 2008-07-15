@@ -26,6 +26,10 @@ describe RolesController do
     it "should map { :controller => 'roles', :action => 'destroy', :id => 1} to /roles/1" do
       route_for(:controller => "roles", :action => "destroy", :id => 1).should == "/roles/1"
     end
+  
+    it "should map { :controller => 'roles', :action => 'edit_page_position', :id => 1} to /roles/edit_page_position/1" do
+      route_for(:controller => "roles", :action => "edit_page_position", :id => 1).should == "/roles/edit_page_position/1"
+    end
   end
 
   describe "route recognition" do
@@ -56,6 +60,10 @@ describe RolesController do
   
     it "should generate params { :controller => 'roles', action => 'destroy', id => '1' } from DELETE /roles/1" do
       params_from(:delete, "/roles/1").should == {:controller => "roles", :action => "destroy", :id => "1"}
+    end
+  
+    it "should generate params { :controller => 'roles', action => 'edit_page_position', id => '1' } from POST /roles/edit_page_position/1" do
+      params_from(:post, "/roles/edit_page_position/1").should == {:controller => "roles", :action => "edit_page_position", :id => "1"}
     end
   end
 end

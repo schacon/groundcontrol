@@ -1,24 +1,40 @@
+
 <h1><%=h @role.role %></h1>
 
 <br/>
 
 <table class="long">
-	<tr><td width="50%" valign="top">
-		
-		<h2 class="title">Hosts</h2>
-		
-		<% @role.hosts.each do |host| %>
-			<%= link_to host.hostname, host %><br/>
-		<% end %>
-
-	</td><td width="50%" valign="top">
-		<h2 class="title">Pages</h2>
-
-		<% @role.pages.each do |page| %>
-			<%= link_to page.uri_pattern, page_url(page) %><br/>
-		<% end %>
-		
-	</td></tr>
+	<tr>
+	    <td width="50%" valign="top">
+	        
+    		<h2 class="title">Hosts</h2>
+    		
+    		<% @role.hosts.each do |host| %>
+    			<%= link_to host.hostname, host %><br/>
+    		<% end %>
+	    </td>
+	    
+	    <td width="50%" valign="top">
+    	<% unless @role.pages.empty? %>
+    		
+    		<h2 class="title">Pages</h2>
+    		
+    		<ul id="page_list">
+        		<% @role.pages.each do |page| %>
+            		
+            		<li id="page_<%= page.id %>" style="margin:8px;">
+            			<%= link_to page.uri_pattern, page_url(page) %>
+            			<%= image_tag "button.sort.gif", :style => "position:absolute; right:0px;" %>
+            		</li>
+    		    <% end %>
+    		</ul>
+            <%= sortable_element 'page_list',
+                :url => {:controller => :roles, :action => "edit_page_position", :id => @role.id},
+                :complete => visual_effect(:highlight, 'page_list') %>
+      <p>Drag and drop pages to change their sequence</p>
+    	<% end %>
+    	</td>
+    </tr>
 </table>
 
 

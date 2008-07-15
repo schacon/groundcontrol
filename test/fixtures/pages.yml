@@ -4,7 +4,21 @@ google_com:
   assertions: "assert_equal"
   variables:
   section:
-  order: 1
+  position: 1
+google_com_about:
+  role: web_site_external
+  uri_pattern: "/about.html" # this page does actually exist
+  assertions: "assert_equal"
+  variables:
+  section:
+  position: 2
+google_com_privacy:
+  role: web_site_external
+  uri_pattern: "/intl/en/privacy.html" # this page does actually exist
+  assertions: "assert_equal"
+  variables:
+  section:
+  position: 3
 
 web_page1:
   role: web_app1
@@ -12,18 +26,18 @@ web_page1:
   assertions: "assert_equal"
   variables: "display_id"
   section: "admin"
-  order: 1
+  position: 1
 web_page2:
   role: web_app1
   uri_pattern: "/web/app/%display_id%/edit"
   assertions: "assert_equal"
   variables: "display_id"
   section: "admin"
-  order: 2
+  position: 2
 client_page1:
   role: client_app1
   uri_pattern: "/client/app/%display_id%"
   assertions: "assert_equal"
   variables: "display_id"
   section: "displays"
-  order: 3
+  position: 3
