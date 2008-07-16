@@ -16,11 +16,13 @@
 $(function() {
 	$('#show_fails').click(function() {
 		$('.pass').hide();
+		return false;
 	})
 	
 	$('#show_all').click(function() {
 		$('.pass').show();
 		$('.fail').show();
+		 return false;
 	})
 	
 })
