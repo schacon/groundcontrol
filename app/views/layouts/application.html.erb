@@ -2,11 +2,11 @@
  "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <title>GroundControl - Reactrix Testing</title>
-  <link rel="stylesheet" href="/stylesheets/reset-fonts-grids.css" type="text/css">
-  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
-  <%= javascript_include_tag :defaults %>
+  <%# settings for stylesheet_link_tag and javascript_include_tag in environment.rb %>
+  <%= stylesheet_link_tag    :ground_control_css_base %>
+  <%= javascript_include_tag :ground_control_js_base  %>
   <%= yield :header %>
+  <title>GroundControl - Reactrix Testing</title>
 </head>
 <body>
   <div id="doc" class="yui-t7">

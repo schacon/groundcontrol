@@ -67,3 +67,19 @@ Rails::Initializer.run do |config|
   config.active_record.colorize_logging = false
 
 end
+
+##
+# customize the application-wide javasacript libraries here -- just the bare minimum shared by every page.
+# other pages that need more can use the content_for(:header, javascript_include_tag("jquery")) method.
+# it is important to do it this way because some JavaScript libs give each other errors.
+# (jquery.js and Prototype's dragdrop.js cannot be loaded together)
+ActionView::Helpers::AssetTagHelper::register_javascript_expansion(
+    :ground_control_js_base => ['application']
+)
+
+##
+# customize the application-wide CSS here -- just the bare minimum shared by every page.
+# other pages that need more can use the content_for(:header, stylesheet_link_tag("the_style")) method.
+ActionView::Helpers::AssetTagHelper::register_stylesheet_expansion(
+    :ground_control_css_base => ['reset-fonts-grids', 'style']
+)
