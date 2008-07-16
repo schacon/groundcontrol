@@ -26,15 +26,15 @@
   <div id="testlog"></div>
   
   <!-- Put or load sample/test html here (load via sampleLoad(file) in setup() methods) -->
-  <div id="sample"></div>
+  <div id="sample">
+    <div id="exercise_div"> </div>
+  </div>
 </div>
 
 <script type="text/javascript">
 // <![CDATA[
 
   new Test.Unit.Runner({
-    
-    // replace this with your real tests
     
     setup: function() {
       
@@ -44,8 +44,13 @@
       
     },
     
-    testTruth: function() { with(this) {
-      assert(true);
+    test_watch_exercise_init: function() { with(this) {
+      var x;
+      assertNothingRaised(function () {
+        x = GroundControl.Hosts.watch_exercise_init('exercise_div', 0);
+      })
+      assertNotNullOrUndefined(x);
+      assertEqual(x, 0);
     }}
       
   }, {testLog: "testlog"}); 

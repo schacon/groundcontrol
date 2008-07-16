@@ -1,13 +1,12 @@
 <% content_for :header, javascript_include_tag("jquery") %>
+<% content_for :header, javascript_include_tag("hosts")  %>
+<% exercise_div_id = 'exercise' %>
 
 <h1>Running Exercise</h1>
 
-<div id="exercise">
+<div id="<%= exercise_div_id %>">
 <%= render :partial => 'exercise' %>
 </div>
 
-<script>
-var refreshId = setInterval(function() {
-     $('exercise').load('/hosts/exercise/<%= @exercise.id %>');
-}, 3000);
-</script>
+
+<%= javascript_tag "GroundControl.Hosts.watch_exercise_init('#{exercise_div_id}', #{@exercise.id})" %>
