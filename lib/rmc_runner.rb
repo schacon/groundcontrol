@@ -105,14 +105,14 @@ class RmcRunner
       end
 
       # [MM: 37824.0 CH:3876.0 TM:1.380838]
-      # if m = /\[MM:(.*?) CH:(.*?) TM:(.*)\]/.match(get_page.body)
-      #   puts 'mem: ' + m[1]
-      #   puts 'chg: ' + m[2]
-      #   puts 'tim: ' + m[3]
-      #   sample.memory = m[2].to_i
-      # end
-      # puts 'siz: ' + get_page.body.size.to_s
-      sample.memory = `ps -o rss= -p #{Process.pid}`.to_i rescue 0 # in kilobytes
+      if m = /\[MM:(.*?) CH:(.*?) TM:(.*)\]/.match(get_page.body)
+        #puts 'mem: ' + m[1]
+        #puts 'chg: ' + m[2]
+        #puts 'tim: ' + m[3]
+        sample.memory = m[2].to_i
+      end
+      #puts 'siz: ' + get_page.body.size.to_s
+      #sample.memory = `ps -o rss= -p #{Process.pid}`.to_i rescue 0 # in kilobytes
       sample.page_size = get_page.body.size
       sample.response = get_page.code.to_i rescue nil
       logger.debug "#{self.class}#hit_page:: GET response code: #{sample.response}" unless logger.nil?
@@ -128,7 +128,7 @@ class RmcRunner
       puts e.inspect
       sample.response = get_page.code.to_i rescue 404
       elapsed = (Time.now - start_time)  # get amount of time taken
-    rescue Timeout::Error          
+    rescue Timeout::Error => e
       logger.debug "#{self.class}#hit_page:: encountered exception (Timeout::Error): #{e.message}\n#{e.backtrace}" unless logger.nil?
       elapsed = (Time.now - start_time)  # get amount of time taken
     ensure
