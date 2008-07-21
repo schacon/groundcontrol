@@ -1,10 +1,10 @@
 require File.join(File.dirname(__FILE__), '..', 'test', 'test_helper')
 
 class RmcRunnerTest < Test::Unit::TestCase
-  fixtures :exercises
+  fixtures :exercises, :samples
   
   def test_pound
-    sample_count = Sample.count
+    pre_existing_sample_count = Sample.count
     exercise     = exercises(:ex_1_for_google)
     host         = exercise.host
     opts         = {
@@ -19,6 +19,7 @@ class RmcRunnerTest < Test::Unit::TestCase
     runner       = RmcRunner.new(opts)
     # currently, the call to pound will result in "Argh - Login Failed" printed out STDOUT.
     runner.pound(num_hits_per, num_users)
-    assert_equal sample_count+num_hits_per, Sample.count
+    expected_samples = pre_existing_sample_count + ((num_hits_per*num_users) *host.role.pages.size)
+    assert_equal expected_samples, Sample.count
   end
 end
