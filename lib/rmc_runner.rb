@@ -109,10 +109,10 @@ class RmcRunner
         #puts 'mem: ' + m[1]
         #puts 'chg: ' + m[2]
         #puts 'tim: ' + m[3]
-        sample.memory = m[2].to_i
+        sample.changed_memory = m[2].to_i
+        sample.total_memory   = m[3].to_i
       end
       #puts 'siz: ' + get_page.body.size.to_s
-      #sample.memory = `ps -o rss= -p #{Process.pid}`.to_i rescue 0 # in kilobytes
       sample.page_size = get_page.body.size
       sample.response = get_page.code.to_i rescue nil
       logger.debug "#{self.class}#hit_page:: GET response code: #{sample.response}" unless logger.nil?
