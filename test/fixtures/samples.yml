@@ -8,4 +8,5 @@ ex_1_for_webapp1_sample1:
   page_data: "<html/>"
   page_size: 7
   page_uri: "/web/app/1"
-  memory:
+  changed_memory:
+  total_memory:

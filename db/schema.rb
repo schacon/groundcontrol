@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080715185510) do
+ActiveRecord::Schema.define(:version => 20080724205241) do
 
   create_table "bj_config", :primary_key => "bj_config_id", :force => true do |t|
     t.text "hostname"
@@ -94,18 +94,19 @@ ActiveRecord::Schema.define(:version => 20080715185510) do
   end
 
   create_table "samples", :force => true do |t|
-    t.integer  "exercise_id", :limit => 11
-    t.integer  "page_id",     :limit => 11
+    t.integer  "exercise_id",    :limit => 11
+    t.integer  "page_id",        :limit => 11
     t.boolean  "passed"
-    t.integer  "user",        :limit => 11
-    t.integer  "response",    :limit => 11
+    t.integer  "user",           :limit => 11
+    t.integer  "response",       :limit => 11
     t.float    "time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "page_data"
-    t.integer  "page_size",   :limit => 11
-    t.float    "memory"
+    t.integer  "page_size",      :limit => 11
+    t.float    "changed_memory"
     t.string   "page_uri"
+    t.float    "total_memory"
   end
 
   add_index "samples", ["exercise_id", "page_id"], :name => "index_samples_on_excercise_id_and_page_id"
