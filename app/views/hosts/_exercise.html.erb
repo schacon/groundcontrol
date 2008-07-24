@@ -5,7 +5,7 @@
 		<th>User</th>
 		<th>Time</th>
 		<th>Page Size</th>
-		<th>Memory (Kb)</th>
+		<th>Changed Memory (Kb)</th>
 	</tr>
 
 <% @exercise.samples.rev.each do |sample| %>
@@ -15,7 +15,7 @@
 		<td><%= sample.user %></td>
 		<td class="<%= sample.time < 1 ? 'good' : 'bad' rescue nil %>"><%= sample.time %></td>
 		<td align="right"><%= sample.page_size %></td>
-		<td align="right" class="<%= sample.memory < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.memory %></td>
+		<td align="right" class="<%= sample.changed_memory < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.changed_memory %></td>
 	</tr>
 <% end %>
 </table>

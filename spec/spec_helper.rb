@@ -76,7 +76,8 @@ Spec::Runner.configure do |config|
     sample.stub!(:time).and_return(nil)
     sample.stub!(:page_size).and_return(nil)
     sample.stub!(:page_uri).and_return(nil)
-    sample.stub!(:memory).and_return(nil)
+    sample.stub!(:changed_memory).and_return(nil)
+    sample.stub!(:total_memory).and_return(nil)
     sample
   end
 end

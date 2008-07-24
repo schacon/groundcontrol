@@ -310,4 +310,36 @@ describe HostsController do
       response.should redirect_to(hosts_url)
     end
   end
+
+  describe "handling GET /hosts/watch_exercise/:id" do
+
+    before(:each) do
+      @exercise = mock_model(Exercise)
+      Exercise.stub!(:find).and_return([@exercise])
+    end
+  
+    def do_get
+      get :watch_exercise, :id => @exercise.id
+    end
+  
+    it "should be successful" do
+      do_get
+      response.should be_success
+    end
+
+    it "should render index template" do
+      do_get
+      response.should render_template('hosts/watch_exercise')
+    end
+  
+    it "should find all hosts" do
+      Exercise.should_receive(:find).with(@exercise.id.to_s).and_return([@exercise])
+      do_get
+    end
+  
+    it "should assign the found hosts for the view" do
+      do_get
+      assigns[:exercise].should == [@exercise]
+    end
+  end
 end
