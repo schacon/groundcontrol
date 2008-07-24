@@ -1,12 +1,12 @@
 # == Schema Information
-# Schema version: 20080708165855
+# Schema version: 20080724205241
 #
 # Table name: pages
 #
 #  id          :integer(11)     not null, primary key
 #  uri_pattern :string(255)     
 #  role_id     :integer(11)     
-#  order       :integer(11)     
+#  position    :integer(11)     
 #  assertions  :string(255)     
 #  variables   :string(255)     
 #  section     :string(255)     
