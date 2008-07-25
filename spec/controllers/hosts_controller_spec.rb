@@ -311,7 +311,7 @@ describe HostsController do
     end
   end
 
-  describe "handling GET /hosts/watch_exercise/:id" do
+  describe "handling GET /hosts/watch_exercise/:exercise_id" do
 
     before(:each) do
       @exercise = mock_model(Exercise)
@@ -340,6 +340,40 @@ describe HostsController do
     it "should assign the found hosts for the view" do
       do_get
       assigns[:exercise].should == [@exercise]
+    end
+  end
+  
+  describe "handling GET /hosts/run_exercise/:host_id" do
+
+    before(:each) do
+      @host = hosts(:localhost)
+      Host.stub!(:find).and_return(@host)
+    end
+    
+    def do_get
+      get :run_exercise, :id => @host.id
+      @exercise = assigns[:exercise]
+    end
+    
+    it "should be successful" do
+      do_get
+      response.should be_redirect
+    end
+    
+    it "should redirect to watch_exercise action" do
+      do_get
+      response.should redirect_to(:controller => 'hosts', :action => 'watch_exercise', :id => @exercise.id)
+    end
+    
+    it "should find the Host by id" do
+      Host.should_receive(:find).with(@host.id.to_s).and_return(@host)
+      do_get
+    end
+    
+    it "should assign the host and exercise" do
+      do_get
+      assigns[:host].    should == @host
+      assigns[:exercise].should == @exercise
     end
   end
 end

@@ -2,9 +2,9 @@ class HostsController < ApplicationController
   
   def run_exercise
     if @host = Host.find(params[:id])
-      exercise = Exercise.create(:host => @host)
-      Bj.submit "./jobs/performance_test.rb #{exercise.id}"
-      redirect_to :action => 'watch_exercise', :id => exercise.id
+      @exercise = Exercise.create(:host => @host)
+      Bj.submit "./jobs/performance_test.rb #{@exercise.id}"
+      redirect_to :action => 'watch_exercise', :id => @exercise.id
     else
       redirect_to :action => 'index'
     end
