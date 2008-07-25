@@ -109,8 +109,8 @@ class RmcRunner
         #puts 'mem: ' + m[1]
         #puts 'chg: ' + m[2]
         #puts 'tim: ' + m[3]
+        sample.total_memory   = m[1].to_i
         sample.changed_memory = m[2].to_i
-        sample.total_memory   = m[3].to_i
       end
       #puts 'siz: ' + get_page.body.size.to_s
       sample.page_size = get_page.body.size
