@@ -13,4 +13,8 @@ describe Exercise do
     @exercise.save       .should equal(true)
     @exercise.new_record?.should equal(false)
   end
+  
+  it "should respond to expected methods" do
+    @exercise.should respond_to(:exercise_type)
+  end
 end
