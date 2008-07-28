@@ -343,7 +343,7 @@ describe HostsController do
     end
   end
   
-  describe "handling GET /hosts/run_exercise/:host_id" do
+  describe "handling GET /hosts/run_exercise/:host_id/performance" do
 
     before(:each) do
       @host = hosts(:localhost)

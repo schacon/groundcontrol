@@ -26,6 +26,10 @@ describe HostsController do
     it "should map { :controller => 'hosts', :action => 'destroy', :id => 1} to /hosts/1" do
       route_for(:controller => "hosts", :action => "destroy", :id => 1).should == "/hosts/1"
     end
+  
+    it "should map { :controller => 'hosts', :action => 'run_exercise', :id => 1, :test_type => 'performance'} to /hosts/run_exercise/1/performance" do
+      route_for(:controller => "hosts", :action => "run_exercise", :id => 1, :test_type => 'performance').should == "/hosts/run_exercise/1/performance"
+    end
   end
 
   describe "route recognition" do
@@ -56,6 +60,10 @@ describe HostsController do
   
     it "should generate params { :controller => 'hosts', action => 'destroy', id => '1' } from DELETE /hosts/1" do
       params_from(:delete, "/hosts/1").should == {:controller => "hosts", :action => "destroy", :id => "1"}
+    end
+  
+    it "should generate params { :controller => 'hosts', action => 'run_exercise', id => '1', :test_type => 'performance' } from GET /hosts/run_exercise/1/performance" do
+      params_from(:get, "/hosts/run_exercise/1/performance").should == {:controller => "hosts", :action => "run_exercise", :id => "1", :test_type => 'performance'}
     end
   end
 end
