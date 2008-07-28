@@ -25,10 +25,14 @@
 		</table>
 	</td><td width="70%" valign="top">
 		
-		<div class="options"><a href="/hosts/run_exercise/<%= @host.id %>">run tests</a></div>
+		<div class="options">
+		  <%= link_to 'run tests', run_exercise_path(:id => @host.id, :test_type => 'performance') %>
+		</div>
 		<h2 class="title">Performance Tests</h2>
 		
-		<div class="options"><a href="/hosts/run_exercise/<%= @host.id %>">run tests</a></div>
+		<div class="options">
+		  <%= link_to 'run tests', run_exercise_path(:id => @host.id, :test_type => 'memory') %>
+		</div>
 		<h2 class="title">Memory Tests</h2>
 		
 		<table class="long data">
