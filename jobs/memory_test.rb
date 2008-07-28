@@ -11,5 +11,6 @@ opts        = {
     :exercise => exercise,
     :logger   => RAILS_DEFAULT_LOGGER
 }
-runner      = RmcRunner.new(opts)
+
+runner = RmcRunner.new(opts)
 runner.memory_test('/')
