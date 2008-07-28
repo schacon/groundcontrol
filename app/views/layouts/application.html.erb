@@ -29,6 +29,8 @@
     </div>
     <div id="bd">
       <div class="main">
+        <% if flash[:error]  %><div class="error" ><%= flash[:error] .to_s %></div><% end %>
+        <% if flash[:notice] %><div class="notice"><%= flash[:notice].to_s %></div><% end %>
   	    <%= yield %>
   	  </div>
     </div>

@@ -18,9 +18,11 @@ ex_1_for_google:
   passed: t
   failed: f
   users: 2
+  exercise_type: "performance"
 
 ex_1_for_webapp1:
   host: web_app1_host1
   passed: t
   failed: f
   users: 15
+  exercise_type: "memory"

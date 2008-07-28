@@ -51,7 +51,7 @@ class RmcRunner
     
     1.upto(times) do |run|
       sample = hit_page(agent, route)
-      puts
+      # puts
     end
     
   end

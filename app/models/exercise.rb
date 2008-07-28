@@ -14,10 +14,16 @@
 #
 
 class Exercise < ActiveRecord::Base
+  EXERCISE_TYPES = %w{performance memory}.freeze
+  
   belongs_to :host
   has_many :samples
   
   named_scope :recent, :order => 'created_at DESC', :limit => 10
+  
+  
+  validates_inclusion_of :exercise_type, :in => EXERCISE_TYPES
+  
   
   def sample_size
     samples.size

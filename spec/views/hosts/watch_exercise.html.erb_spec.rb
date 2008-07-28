@@ -8,6 +8,7 @@ describe "/hosts/watch_exercise.html.erb" do
     sample_array = [mock_sample_model()]
     sample_array.stub!(:rev) .and_return(sample_array)
     @exercise.stub!(:samples).and_return(sample_array)
+    @exercise.stub!(:exercise_type).and_return(Exercise::EXERCISE_TYPES.first)
     assigns[:exercise] = @exercise
   end
 

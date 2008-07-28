@@ -347,27 +347,31 @@ describe HostsController do
 
     before(:each) do
       @host = hosts(:localhost)
-      Host.stub!(:find).and_return(@host)
     end
     
-    def do_get
-      get :run_exercise, :id => @host.id
+    def do_get(id = nil, test_type = nil)
+      get :run_exercise, :id => (id || @host.id), :test_type => (test_type || Exercise::EXERCISE_TYPES.first)
       @exercise = assigns[:exercise]
+    end
+    
+    it "should not be able to proceed with missing or invalid input" do
+      do_get 0
+      response.should be_redirect
+      response.should redirect_to(:action => 'show')
+      do_get @host.id, 'asdf'
+      response.should be_redirect
+      response.should redirect_to(:action => 'show')
     end
     
     it "should be successful" do
       do_get
       response.should be_redirect
+      response.should redirect_to(:action => 'watch_exercise', :id => @exercise.id)
     end
     
     it "should redirect to watch_exercise action" do
       do_get
       response.should redirect_to(:controller => 'hosts', :action => 'watch_exercise', :id => @exercise.id)
-    end
-    
-    it "should find the Host by id" do
-      Host.should_receive(:find).with(@host.id.to_s).and_return(@host)
-      do_get
     end
     
     it "should assign the host and exercise" do

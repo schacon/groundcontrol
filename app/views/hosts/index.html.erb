@@ -6,6 +6,7 @@
     <th>URL</th>
     <th>Role</th>
     <th>Performance Runs</th>
+    <th>Memory Runs</th>
   </tr>
 
 <% for host in @hosts %>
@@ -13,7 +14,8 @@
     <td><%= link_to host.hostname, host %></td>
     <td><%=h host.url %></td>
     <td><%=h host.role.role rescue nil %></td>
-    <td><%=h host.exercises.count %></td>
+    <td><%=h host.exercises.count(:conditions => {:exercise_type => Exercise::EXERCISE_TYPES[0]}) %></td>
+    <td><%=h host.exercises.count(:conditions => {:exercise_type => Exercise::EXERCISE_TYPES[1]}) %></td>
   </tr>
 <% end %>
 </table>

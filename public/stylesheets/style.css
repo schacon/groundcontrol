@@ -45,7 +45,8 @@ h3 { font-size: 1.1em; font-weight: bold; padding: 3px;}
 .comment .header { padding: 2px; border-bottom: 1px solid #aaa; background: #eee;}
 .noticeBox { padding: 10px; background: #eee; border: 1px solid #aaa; margin: 20px; text-align: center;}
 
-.notice { background: #acf; border: 2px solid #cdf; padding: 5px; }
+.notice { background: yellow; padding: 5px; }
+.error  { background: #ff0000; padding: 5px; color: #efefef; }
 
 .commitFile { background: #eee; padding: 3px; font-weight: bold;}
 #searchBox { padding: 5px; text-align: center;}
