@@ -14,9 +14,9 @@
 
 google_com:
   role: web_site_external
-  uri_pattern: "/"
+  uri_pattern: "/%id%"
   assertions: "assert_equal"
-  variables:
+  variables: ":id"
   section:
   position: 1
 google_com_about:
@@ -56,10 +56,17 @@ client_page1:
   section: "displays"
   position: 3
 
-localhost_index:
+localhost_root:
   role: web_site_localhost
   uri_pattern: "/"
   assertions:
   variables:
   section:
   position: 1
+localhost_:
+  role: web_site_localhost
+  uri_pattern: "/hosts/%id%"
+  assertions: "assert_equal"
+  variables: ":id"
+  section: "local"
+  position: 2

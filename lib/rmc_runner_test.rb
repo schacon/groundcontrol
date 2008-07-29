@@ -5,7 +5,7 @@ class RmcRunnerTest < Test::Unit::TestCase
   
   def test_pound
     pre_existing_sample_count = Sample.count
-    exercise     = exercises(:ex_1_for_google)
+    exercise     = exercises(:localhost)
     host         = exercise.host
     opts         = {
       :login     => '/login/login',

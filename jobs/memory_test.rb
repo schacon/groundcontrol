@@ -13,4 +13,5 @@ opts        = {
 }
 
 runner = RmcRunner.new(opts)
+# TODO:GVT: the call to RmcRunner.memory_test needs to be changed to have a different signature
 runner.memory_test('/')

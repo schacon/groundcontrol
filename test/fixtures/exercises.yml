@@ -13,16 +13,23 @@
 #  exercise_type :string(30)      
 #
 
-ex_1_for_google:
+google:
   host: google_com
   passed: t
   failed: f
   users: 2
   exercise_type: "performance"
 
-ex_1_for_webapp1:
+webapp1:
   host: web_app1_host1
   passed: t
   failed: f
   users: 15
+  exercise_type: "memory"
+
+localhost:
+  host: localhost
+  passed:
+  failed:
+  users: 1
   exercise_type: "memory"

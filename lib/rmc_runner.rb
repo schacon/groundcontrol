@@ -49,6 +49,7 @@ class RmcRunner
     agent.read_timeout = 15.0 # set a 15 second timeout
     login_agent(agent)
     
+    # TODO:GVT: this needs to also loop thru each page
     1.upto(times) do |run|
       sample = hit_page(agent, route)
       # puts
@@ -70,7 +71,8 @@ class RmcRunner
             
       login_agent(agent)
       variables = {}    
-
+      
+      # TODO:GVT: this needs to be changed to be reusable for the memory_test method
       1.upto(hits_per) do |hit|
         @options[:host].role.pages.each do |page|
           route = page.uri_pattern
