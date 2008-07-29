@@ -72,7 +72,7 @@ class RmcRunner
       login_agent(agent)
       variables = {}    
       
-      # TODO:GVT: this needs to be changed to be reusable for the memory_test method
+      # TODO:GVT: this needs to be changed to be reusable for the memory_test method. **the variable substitution appears to not be working??**
       1.upto(hits_per) do |hit|
         @options[:host].role.pages.each do |page|
           route = page.uri_pattern
