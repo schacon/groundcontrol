@@ -36,18 +36,40 @@ google_com_privacy:
 
 web_page1:
   role: web_app1
-  uri_pattern: "/web/app/%display_id%"
-  assertions: "assert_equal"
-  variables: "display_id"
-  section: "admin"
+  uri_pattern: "/"
+  assertions: ""
+  variables: "current_user_id:/user/settings/(\\d+)"
+  section: "displays"
   position: 1
 web_page2:
   role: web_app1
-  uri_pattern: "/web/app/%display_id%/edit"
-  assertions: "assert_equal"
-  variables: "display_id"
-  section: "admin"
+  uri_pattern: "/displays"
+  assertions:
+  variables:
+  section: "displays"
   position: 2
+web_page3:
+  role: web_app1
+  uri_pattern: "/displays/list"
+  assertions: ""
+  variables: "display_id:/displays/show/(\\d+)"
+  section: "displays"
+  position: 3
+web_page4:
+  role: web_app1
+  uri_pattern: "/displays/new"
+  assertions:
+  variables:
+  section: "displays"
+  position: 4
+web_page5:
+  role: web_app1
+  uri_pattern: "/displays/overview"
+  assertions:
+  variables:
+  section: "displays"
+  position: 5
+
 client_page1:
   role: client_app1
   uri_pattern: "/client/app/%display_id%"
