@@ -21,7 +21,7 @@ google:
   exercise_type: "performance"
 
 webapp1:
-  host: web_app1_host1
+  host: rmc01_virtual
   passed: t
   failed: f
   users: 15
