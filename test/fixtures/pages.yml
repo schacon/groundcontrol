@@ -15,8 +15,8 @@
 google_com:
   role: web_site_external
   uri_pattern: "/%id%"
-  assertions: "assert_equal"
-  variables: ":id"
+  assertions: ""
+  variables: "id:(\d)"
   section:
   position: 1
 google_com_about:
