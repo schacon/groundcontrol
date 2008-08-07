@@ -36,9 +36,9 @@ class HostsController < ApplicationController
     @exercise.samples.each do |sample|
       pid = sample.page_id
       @data[pid] ||= {:count => 0, :memory => 0, :time => 0, 
-                      :memory_avg => 0, :time_avg => 0, :page => sample.page }
+                      :memory_avg => 0, :time_avg => 0, :page => sample.page_uri }
       @data[pid][:count] += 1
-      @data[pid][:memory] += sample.memory.to_i
+      @data[pid][:memory] += sample.changed_memory.to_i
       @data[pid][:time] += sample.time.to_f
       @data[pid][:memory_avg] = (@data[pid][:memory] / @data[pid][:count])
       @data[pid][:time_avg] = (@data[pid][:time] / @data[pid][:count])

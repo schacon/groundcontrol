@@ -5,7 +5,7 @@
 <table class="long">
 <% @data.sort { |a, b| b[1][:memory_avg] <=> a[1][:memory_avg] }[0, 5].each do |pid, page| %>
 	<tr>
-		<td><%= page[:page].uri_pattern %></td>
+		<td><%= page[:page] %></td>
 		<td><%= page[:memory_avg] %></td>
 		<td><%= page[:time_avg] %></td>
 	</tr>
@@ -17,7 +17,7 @@
 <table class="long">
 <% @data.sort { |a, b| b[1][:time_avg] <=> a[1][:time_avg] }[0, 5].each do |pid, page| %>
 	<tr>
-		<td><%= page[:page].uri_pattern %></td>
+		<td><%= page[:page] %></td>
 		<td><%= page[:memory_avg] %></td>
 		<td><%= page[:time_avg] %></td>
 	</tr>
@@ -29,7 +29,7 @@
 <table class="long">
 <% @data.sort.each do |pid, page| %>
 	<tr>
-		<td><%= page[:page].uri_pattern %></td>
+		<td><%= page[:page] %></td>
 		<td><%= page[:memory_avg] %></td>
 		<td><%= page[:time_avg] %></td>
 	</tr>
