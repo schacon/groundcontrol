@@ -22,4 +22,23 @@ class RmcRunnerTest < Test::Unit::TestCase
     expected_samples = pre_existing_sample_count + ((num_hits_per*num_users) *host.role.pages.size)
     assert_equal expected_samples, Sample.count
   end
+  
+  def test_memory
+    pre_existing_sample_count = Sample.count
+    exercise     = exercises(:localhost)
+    host         = exercise.host
+    opts         = {
+      :login     => '/login/login',
+      :fields    => {:login => 'login', :password => 'password'},
+      :host      => host,
+      :exercise  => exercise,
+      :logger    => RAILS_DEFAULT_LOGGER
+    }
+    num_hits = 10
+    runner   = RmcRunner.new(opts)
+    # currently, the next line will result in "Argh - Login Failed" printed out STDOUT.
+    runner.exercise_memory('/', num_hits)
+    expected_samples = pre_existing_sample_count + num_hits
+    assert_equal expected_samples, Sample.count
+  end
 end

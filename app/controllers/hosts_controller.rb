@@ -1,21 +1,28 @@
 class HostsController < ApplicationController
   
-  verify :only => :run_exercise, :params => [:id, :test_type],
-    :add_flash   => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
-  def run_exercise
-    unless @host = Host.find_by_id(params[:id]) rescue nil
-      flash[:error] = "unable to find Host #{params[:id]}"
-      redirect_to :action => 'show' and return
-    end
-    @exercise = Exercise.new(:host => @host, :exercise_type => params[:test_type])
-    unless @exercise.valid? && @exercise.save
-      flash[:notice] = "unable to create Exercise: #{@exercise.errors.full_messages.join(", ").to_s}"
-      redirect_to :action => 'show' and return
-    end
-    Bj.submit "./jobs/#{@exercise.exercise_type}_test.rb #{@exercise.id}"
+  verify :only => :run_performance_exercise, :params => :id, :method => :post,
+    :add_flash => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
+  def run_performance_exercise
+    @host     = find_host_or_redirect(params[:id]) or return
+    @exercise = create_exercise_or_redirect(:host => @host, :exercise_type => 'performance') or return
+    Bj.submit "./jobs/performance_test.rb #{@exercise.id}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id
   end
   
+  verify :only => :run_memory_exercise, :params => [:id, :uri], :method => :post,
+    :add_flash => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
+  def run_memory_exercise
+    @uri = params[:uri].to_s.strip
+    if @uri.blank?
+      flash[:error] = "the input parameter \"uri\" was absent"
+      redirect_to :action => 'show' and return
+    end
+    @host     = find_host_or_redirect(params[:id]) or return
+    @exercise = create_exercise_or_redirect(:host => @host, :exercise_type => 'memory') or return
+    Bj.submit "./jobs/memory_test.rb #{@exercise.id} #{@uri}"
+    redirect_to :action => 'watch_exercise', :id => @exercise.id
+  end
+    
   def watch_exercise
     @exercise = Exercise.find(params[:id])
   end
@@ -132,5 +139,28 @@ class HostsController < ApplicationController
       format.html { redirect_to(hosts_url) }
       format.xml  { head :ok }
     end
+  end
+
+
+
+private
+  
+  def find_host_or_redirect(host_id)
+    unless host = Host.find_by_id(host_id) rescue nil
+      flash[:error] = "unable to find Host #{host_id}"
+      redirect_to :action => 'show'
+      return
+    end
+    host
+  end
+  
+  def create_exercise_or_redirect(params)
+    exercise = Exercise.new(params)
+    unless exercise.valid? && exercise.save
+      flash[:error] = "unable to create Exercise: #{exercise.errors.full_messages.join(", ").to_s}"
+      redirect_to :action => 'show'
+      return
+    end
+    exercise
   end
 end

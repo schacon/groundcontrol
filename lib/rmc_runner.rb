@@ -8,6 +8,7 @@ require 'peach'
 class RmcRunner
   def initialize(options)
     @logger  = options.delete(:logger)
+    logger.debug "#{self.class}#initialize method called.." unless logger.nil?
     @options = options
   end
   
@@ -17,6 +18,8 @@ class RmcRunner
   private :logger
   
   def login_agent(agent)
+    logger.debug "#{self.class}#login_agent method called.." unless logger.nil?
+    
     u = @options[:host].url_username
     p = @options[:host].url_password
     begin
@@ -42,22 +45,22 @@ class RmcRunner
     pad + message.to_s
   end
   
-  def memory_test(route, times = 20)
+  def exercise_memory(route, times = 20)
+    logger.debug "#{self.class}#memory_test method called.." unless logger.nil?
     
     agent = WWW::Mechanize.new
     agent.log = logger unless logger.nil?
     agent.read_timeout = 15.0 # set a 15 second timeout
     login_agent(agent)
     
-    # TODO:GVT: this needs to also loop thru each page
     1.upto(times) do |run|
       sample = hit_page(agent, route)
-      # puts
     end
-    
   end
   
   def pound(hits_per = 10, users = 1)
+    logger.debug "#{self.class}#pound method called.." unless logger.nil?
+    
     ex = @options[:exercise]
     ex.users = users
     ex.save
@@ -72,7 +75,6 @@ class RmcRunner
       login_agent(agent)
       variables = {}    
       
-      # TODO:GVT: this needs to be changed to be reusable for the memory_test method. **the variable substitution appears to not be working??**
       1.upto(hits_per) do |hit|
         @options[:host].role.pages.each do |page|
           route = page.uri_pattern
@@ -89,8 +91,9 @@ class RmcRunner
   end
   
   def hit_page(agent, route, variables = {}, page = nil)
+    logger.debug "#{self.class}#hit_page method called.." unless logger.nil?
         
-    sample = Sample.create(:exercise => @options[:exercise], :page => page, :page_uri => route)
+    sample = Sample.create!(:exercise => @options[:exercise], :page => page, :page_uri => route)
     sample.passed = false
 
     begin

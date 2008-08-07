@@ -2,6 +2,7 @@
 require File.join(File.dirname(__FILE__), '..', 'config', 'environment')
 
 ex_id       = ARGV[0]
+uri_to_test = ARGV[1]
 exercise    = Exercise.find(ex_id)
 host        = exercise.host
 opts        = {
@@ -13,5 +14,4 @@ opts        = {
 }
 
 runner = RmcRunner.new(opts)
-# TODO:GVT: the call to RmcRunner.memory_test needs to be changed to have a different signature
-runner.memory_test('/')
+runner.exercise_memory(uri_to_test, 1)

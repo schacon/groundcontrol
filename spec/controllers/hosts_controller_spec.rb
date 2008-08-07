@@ -343,39 +343,74 @@ describe HostsController do
     end
   end
   
-  describe "handling GET /hosts/run_exercise/:host_id/performance" do
+  describe "handling POST /hosts/:host_id/run_performance_exercise" do
 
     before(:each) do
       @host = hosts(:localhost)
     end
     
-    def do_get(id = nil, test_type = nil)
-      get :run_exercise, :id => (id || @host.id), :test_type => (test_type || Exercise::EXERCISE_TYPES.first)
+    def do_request(id = nil)
+      post :run_performance_exercise, :id => (id || @host.id)
       @exercise = assigns[:exercise]
     end
     
     it "should not be able to proceed with missing or invalid input" do
-      do_get 0
-      response.should be_redirect
-      response.should redirect_to(:action => 'show')
-      do_get @host.id, 'asdf'
+      do_request 0
       response.should be_redirect
       response.should redirect_to(:action => 'show')
     end
     
     it "should be successful" do
-      do_get
+      do_request
       response.should be_redirect
       response.should redirect_to(:action => 'watch_exercise', :id => @exercise.id)
     end
     
     it "should redirect to watch_exercise action" do
-      do_get
+      do_request
       response.should redirect_to(:controller => 'hosts', :action => 'watch_exercise', :id => @exercise.id)
     end
     
     it "should assign the host and exercise" do
-      do_get
+      do_request
+      assigns[:host].    should == @host
+      assigns[:exercise].should == @exercise
+    end
+  end
+  
+  describe "handling POST /hosts/:host_id/run_memory_exercise" do
+
+    before(:each) do
+      @host = hosts(:localhost)
+    end
+    
+    def do_request(host_id = nil, uri = nil)
+      post :run_memory_exercise, :id => (host_id || @host.id), :uri => uri
+      @exercise = assigns[:exercise]
+    end
+    
+    it "should not be able to proceed with missing or invalid input" do
+      do_request 0
+      response.should be_redirect
+      response.should redirect_to(:action => 'index')
+      do_request @host.id, ' '
+      response.should be_redirect
+      response.should redirect_to(:action => 'show')
+    end
+    
+    it "should be successful" do
+      do_request @host.id, "/"
+      response.should be_redirect
+      response.should redirect_to(:action => 'watch_exercise', :id => @exercise.id)
+    end
+    
+    it "should redirect to watch_exercise action" do
+      do_request @host.id, "/"
+      response.should redirect_to(:controller => 'hosts', :action => 'watch_exercise', :id => @exercise.id)
+    end
+    
+    it "should assign the host and exercise" do
+      do_request @host.id, "/"
       assigns[:host].    should == @host
       assigns[:exercise].should == @exercise
     end

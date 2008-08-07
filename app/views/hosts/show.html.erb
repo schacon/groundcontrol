@@ -26,14 +26,9 @@
 	</td><td width="70%" valign="top">
 		
 		<div class="options">
-		  <%= link_to 'run tests', run_exercise_path(:id => @host.id, :test_type => 'performance') %>
+		  <%= button_to 'Run Performance Test', performance_exercise_path(:id => @host.id) %>
 		</div>
 		<h2 class="title">Performance Tests</h2>
-		
-		<div class="options">
-		  <%= link_to 'run tests', run_exercise_path(:id => @host.id, :test_type => 'memory') %>
-		</div>
-		<h2 class="title">Memory Tests</h2>
 		
 		<table class="long data">
 			<tr>
