@@ -100,7 +100,13 @@ class RmcRunner
       start_time = Time.now
       uri = page_url(route)
       logger.debug "#{self.class}#hit_page:: attempting to GET: #{uri}" unless logger.nil?
-      get_page = agent.get(uri)
+      get_page = begin
+        if page.post_data.blank?
+          agent.get(uri)
+        else
+          agent.post(uri, (CGI.parse(page.post_data) rescue {}))
+        end
+      end
       elapsed = (Time.now - start_time)  # get amount of time taken
 
       if page && page.variables
@@ -131,10 +137,11 @@ class RmcRunner
     rescue WWW::Mechanize::ResponseCodeError => e
       logger.debug "#{self.class}#hit_page:: encountered exception (WWW::Mechanize::ResponseCodeError): #{e.message}\n#{e.backtrace}" unless logger.nil?
       puts e.inspect
-      sample.response = get_page.code.to_i rescue 404
+      sample.response = e.response_code.to_i rescue 404
       elapsed = (Time.now - start_time)  # get amount of time taken
     rescue Timeout::Error => e
       logger.debug "#{self.class}#hit_page:: encountered exception (Timeout::Error): #{e.message}\n#{e.backtrace}" unless logger.nil?
+      sample.response = 0
       elapsed = (Time.now - start_time)  # get amount of time taken
     ensure
       sample.time = elapsed

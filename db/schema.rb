@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080728182013) do
+ActiveRecord::Schema.define(:version => 20080807001351) do
 
   create_table "bj_config", :primary_key => "bj_config_id", :force => true do |t|
     t.text "hostname"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20080728182013) do
     t.string  "assertions"
     t.string  "variables"
     t.string  "section"
+    t.text    "post_data"
   end
 
   add_index "pages", ["role_id"], :name => "index_pages_on_role_id"

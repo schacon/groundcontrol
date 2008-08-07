@@ -22,5 +22,6 @@ describe "Page create" do
     @page.should respond_to(:variables)
     @page.should respond_to(:section)
     @page.should respond_to(:uri_pattern)
+    @page.should respond_to(:post_data)
   end
 end
