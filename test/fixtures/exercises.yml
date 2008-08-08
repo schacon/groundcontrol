@@ -29,6 +29,18 @@ webapp1:
 
 localhost:
   host: localhost
+  passed: 1
+  failed:
+  users: 1
+  exercise_type: "performance"
+localhost_performance1:
+  host: localhost
+  passed:
+  failed:
+  users: 1
+  exercise_type: "performance"
+localhost_memory1:
+  host: localhost
   passed:
   failed:
   users: 1

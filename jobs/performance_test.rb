@@ -9,12 +9,12 @@ exercise = Exercise.find(ex_id)
 host = exercise.host
 
 opts = {
-        :login => '/login/login',
-        :fields => {:login => 'login', :password => 'password'},
-        :host => host,
-        :exercise => exercise,
-        :logger => RAILS_DEFAULT_LOGGER
-       }
+    :login    => '/login/login',
+    :fields   => {:login => 'login', :password => 'password'},
+    :host     => host,
+    :exercise => exercise,
+    :logger   => RAILS_DEFAULT_LOGGER
+}
        
 runner = RmcRunner.new(opts)
 runner.pound(times, users)

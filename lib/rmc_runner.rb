@@ -90,7 +90,7 @@ class RmcRunner
     end
   end
   
-  def hit_page(agent, route, variables = {}, page = nil)
+  def hit_page(agent, route, variables = {}, page = Page.new)
     logger.debug "#{self.class}#hit_page method called.." unless logger.nil?
         
     sample = Sample.create!(:exercise => @options[:exercise], :page => page, :page_uri => route)

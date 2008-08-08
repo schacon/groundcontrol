@@ -5,6 +5,9 @@ ex_id       = ARGV[0]
 uri_to_test = ARGV[1]
 exercise    = Exercise.find(ex_id)
 host        = exercise.host
+
+
+
 opts        = {
     :login    => '/login/login',
     :fields   => {:login => 'login', :password => 'password'},

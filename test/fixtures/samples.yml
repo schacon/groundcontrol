@@ -31,3 +31,40 @@ ex_1_for_webapp1_sample1:
   page_uri: "/web/app/1"
   changed_memory:
   total_memory:
+
+localhost:
+  page: localhost_root
+  exercise: localhost
+  passed: 1
+  user:
+  response:
+  time: 1.2
+  page_data: "<html/>"
+  page_size: 7
+  page_uri: "/"
+  changed_memory: 0.325
+  total_memory: 0.87
+localhost_performance1:
+  page: localhost_root
+  exercise: localhost_performance1
+  passed: 1
+  user:
+  response:
+  time: 1.2
+  page_data: "<html/>"
+  page_size: 7
+  page_uri: "/"
+  changed_memory: 0.535
+  total_memory: 0.49
+localhost_memory1:
+  page: localhost_root
+  exercise: localhost_memory1
+  passed: 1
+  user:
+  response:
+  time: 1.2
+  page_data: "<html/>"
+  page_size: 7
+  page_uri: "/"
+  changed_memory: 0.7401
+  total_memory: 0.96
