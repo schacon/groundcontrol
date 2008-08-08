@@ -55,6 +55,7 @@ Spec::Runner.configure do |config|
     page.stub!(:assertions).and_return("test assertion")
     page.stub!(:variables).and_return("display_id")
     page.stub!(:section).and_return("display")
+    page.stub!(:post_data).and_return("")
     page
   end
   
