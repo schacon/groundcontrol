@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20080728182013
+# Schema version: 20080807001351
 #
 # Table name: pages
 #
@@ -10,6 +10,7 @@
 #  assertions  :string(255)     
 #  variables   :string(255)     
 #  section     :string(255)     
+#  post_data   :text            
 #
 
 google_com:
