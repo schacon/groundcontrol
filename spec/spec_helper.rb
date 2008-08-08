@@ -52,9 +52,9 @@ Spec::Runner.configure do |config|
   def mock_page_model()
     page = mock_model(Page)
     page.stub!(:uri_pattern).and_return("/test/path/%display_id%/edit")
-    page.stub!(:assertions).and_return("test assertion")
-    page.stub!(:variables).and_return("display_id")
-    page.stub!(:section).and_return("display")
+    page.stub!(:assertions).and_return("")
+    page.stub!(:variables).and_return("")
+    page.stub!(:section).and_return("")
     page.stub!(:post_data).and_return("")
     page
   end
