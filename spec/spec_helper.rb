@@ -52,10 +52,10 @@ Spec::Runner.configure do |config|
   def mock_page_model()
     page = mock_model(Page)
     page.stub!(:uri_pattern).and_return("/test/path/%display_id%/edit")
-    page.stub!(:assertions).and_return("")
-    page.stub!(:variables).and_return("")
-    page.stub!(:section).and_return("")
-    page.stub!(:post_data).and_return("")
+    page.stub!(:assertions) .and_return("")
+    page.stub!(:variables)  .and_return("")
+    page.stub!(:section)    .and_return("")
+    page.stub!(:post_data)  .and_return("")
     page
   end
   
@@ -71,14 +71,14 @@ Spec::Runner.configure do |config|
   # creates a general use Sample model with its basic methods stubbed out
   def mock_sample_model()
     sample = mock_model(Sample)
-    sample.stub!(:passed).and_return(nil)
-    sample.stub!(:response).and_return(nil)
-    sample.stub!(:user).and_return(nil)
-    sample.stub!(:time).and_return(nil)
-    sample.stub!(:page_size).and_return(nil)
-    sample.stub!(:page_uri).and_return(nil)
+    sample.stub!(:passed)        .and_return(nil)
+    sample.stub!(:response)      .and_return(nil)
+    sample.stub!(:user)          .and_return(nil)
+    sample.stub!(:time)          .and_return(nil)
+    sample.stub!(:page_size)     .and_return(nil)
+    sample.stub!(:page_uri)      .and_return(nil)
     sample.stub!(:changed_memory).and_return(nil)
-    sample.stub!(:total_memory).and_return(nil)
+    sample.stub!(:total_memory)  .and_return(nil)
     sample
   end
 end
