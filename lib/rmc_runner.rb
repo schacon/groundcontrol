@@ -109,7 +109,7 @@ class RmcRunner
       end
       elapsed = (Time.now - start_time)  # get amount of time taken
 
-      if page && page.variables
+      if page && page.variables && page.variables.include?(':')
         var, pattern = page.variables.split(':')
         values = get_page.body.scan(Regexp.new(pattern))
         variables[var] = values
@@ -128,7 +128,7 @@ class RmcRunner
       sample.response = get_page.code.to_i rescue nil
       logger.debug "#{self.class}#hit_page:: GET response code: #{sample.response}" unless logger.nil?
 
-      if page && page.assertions
+      if page && page.assertions && !page.assertions.empty?
         # look for assertions  
       else
         sample.passed = true if sample.response == 200
