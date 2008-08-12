@@ -2,7 +2,7 @@
 <% content_for :header, javascript_include_tag("hosts")  %>
 <% exercise_div_id = 'exercise' %>
 
-<h1>Running <%= @exercise.exercise_type.to_s.titleize %> Exercise</h1>
+<h1>Running <%=h @exercise.exercise_type.to_s.titleize %> Exercise</h1>
 
 <div id="<%= exercise_div_id %>">
 <%= render :partial => 'exercise' %>

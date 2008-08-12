@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20080807001351
+# Schema version: 20080812205834
 #
 # Table name: exercises
 #
@@ -11,6 +11,8 @@
 #  created_at    :datetime        
 #  updated_at    :datetime        
 #  exercise_type :string(30)      
+#  aut_version   :string(50)      
+#  aut_note      :text            
 #
 
 class Exercise < ActiveRecord::Base

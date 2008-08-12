@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20080807001351
+# Schema version: 20080812205834
 #
 # Table name: exercises
 #
@@ -11,6 +11,8 @@
 #  created_at    :datetime        
 #  updated_at    :datetime        
 #  exercise_type :string(30)      
+#  aut_version   :string(50)      
+#  aut_note      :text            
 #
 
 google:
@@ -19,6 +21,8 @@ google:
   failed: f
   users: 2
   exercise_type: "performance"
+  aut_version:
+  aut_note:
 
 webapp1:
   host: rmc01_virtual
@@ -26,6 +30,8 @@ webapp1:
   failed: f
   users: 15
   exercise_type: "memory"
+  aut_version:
+  aut_note:
 
 localhost:
   host: localhost
@@ -33,15 +39,21 @@ localhost:
   failed:
   users: 1
   exercise_type: "performance"
+  aut_version:
+  aut_note:
 localhost_performance1:
   host: localhost
   passed:
   failed:
   users: 1
   exercise_type: "performance"
+  aut_version:
+  aut_note:
 localhost_memory1:
   host: localhost
   passed:
   failed:
   users: 1
   exercise_type: "memory"
+  aut_version:
+  aut_note:

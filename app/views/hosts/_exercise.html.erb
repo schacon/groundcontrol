@@ -1,3 +1,19 @@
+<table class="data">
+  <tr>
+		<th>Host (Role)</th>
+		<td><%= link_to @exercise.host.hostname, host_url(@exercise.host.id) %> (<%= @exercise.host.role.role %>)</td>
+	</tr>
+  <tr>
+		<th>AUT Version</th>
+		<td><%=h @exercise.aut_version %></td>
+	</tr>
+  <tr>
+		<th>AUT Note</th>
+		<td><%=h @exercise.aut_note %></td>
+	</tr>
+</table>
+<%= spacer %>
+
 <table class="long data" border="1">
 	<tr>
 		<th>Path</th>
@@ -26,6 +42,5 @@
 <% end %>
 </table>
 
-<br/><br/>
+<%= spacer %>
 <small><%= Time.now %></small>
-

@@ -5,14 +5,14 @@
 	<a href="#" id="show_all">Show All</a>
 </div>
 
-<h1>Test Results</h1>
-<br/>
+<h1><%=h @exercise.exercise_type.to_s.titleize %> Test Results</h1>
 
 <div id="exercise">
 <%= render :partial => 'exercise' %>
 </div>
 
-<script>
+
+<script type="text/javascript">
 $(function() {
 	$('#show_fails').click(function() {
 		$('.pass').hide();

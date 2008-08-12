@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080807001351) do
+ActiveRecord::Schema.define(:version => 20080812205834) do
 
   create_table "bj_config", :primary_key => "bj_config_id", :force => true do |t|
     t.text "hostname"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20080807001351) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "exercise_type", :limit => 30
+    t.string   "aut_version",   :limit => 50
+    t.text     "aut_note"
   end
 
   add_index "exercises", ["host_id"], :name => "index_excercises_on_host_id"
