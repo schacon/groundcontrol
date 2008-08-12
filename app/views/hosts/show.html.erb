@@ -1,3 +1,5 @@
+<% content_for :header, javascript_include_tag("hosts") << javascript_include_tag("prototype")  %>
+
 <h1><%=h @host.hostname %> (<%= @host.role.role %>)</h1>
 <h2><%=h @host.url %></h2>
 <br/>
@@ -26,7 +28,8 @@
 	</td><td width="70%" valign="top">
 		
 		<div class="options">
-		  <%= button_to 'Run Performance Test', performance_exercise_path(:id => @host.id) %>
+ 		  <%= button_to_function "Run Performance Test", 
+ 		        "GroundControl.Hosts.run_performance_test('#{performance_exercise_path(:id => @host.id)}')" %>
 		</div>
 		<h2 class="title">Performance Tests</h2>
 		
