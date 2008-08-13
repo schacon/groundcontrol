@@ -28,8 +28,8 @@
 	</td><td width="70%" valign="top">
 		
 		<div class="options">
- 		  <%= button_to_function "Run Performance Test", 
- 		        "GroundControl.Hosts.run_performance_test('#{performance_exercise_path(:id => @host.id)}')" %>
+ 		  <%= button_to_function "Run Performance Test...", 
+ 		        "GroundControl.Hosts.run_performance_test('#{performance_exercise_path(:id => @host.id)}', 'aut_version', 'aut_note')" %>
 		</div>
 		<h2 class="title">Performance Tests</h2>
 		

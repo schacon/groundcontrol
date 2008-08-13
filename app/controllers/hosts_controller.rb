@@ -4,7 +4,12 @@ class HostsController < ApplicationController
     :add_flash => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
   def run_performance_exercise
     @host     = find_host_or_redirect(params[:id]) or return
-    @exercise = create_exercise_or_redirect(:host => @host, :exercise_type => 'performance') or return
+    @exercise = create_exercise_or_redirect(
+      :host          => @host, 
+      :exercise_type => 'performance', 
+      :aut_version   => params[:aut_version], 
+      :aut_note      => params[:aut_note]
+    ) or return
     Bj.submit "./jobs/performance_test.rb #{@exercise.id}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id
   end
@@ -18,7 +23,12 @@ class HostsController < ApplicationController
       redirect_to :action => 'show' and return
     end
     @host     = find_host_or_redirect(params[:id]) or return
-    @exercise = create_exercise_or_redirect(:host => @host, :exercise_type => 'memory') or return
+    @exercise = create_exercise_or_redirect(
+      :host          => @host, 
+      :exercise_type => 'memory', 
+      :aut_version   => params[:aut_version],
+      :aut_note      => params[:aut_note]
+    ) or return
     Bj.submit "./jobs/memory_test.rb #{@exercise.id} #{@uri}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id
   end

@@ -51,6 +51,27 @@
       })
       assertNotNullOrUndefined(x);
       assertEqual(x, 0);
+    }},
+    
+    test_run_performance_test: function() { with(this) {
+      var form_el;
+      var input_name_a  = 'vErSiOn';
+      var input_name_b  = 'nOtE';
+      var submit_to_url = '/test_run_performance_test/192837';
+      assertNothingRaised(function () {
+        form_el = GroundControl.Hosts.run_performance_test(submit_to_url, input_name_a, input_name_b, true);
+      })
+      assertNotNullOrUndefined(form_el);
+      form_input_els = form_el.getInputs();
+      assertEqual(2, form_input_els.length);
+      // check that the form element is as expected
+      assertEqual('post',        form_el.method.toLowerCase()); // some browsers show this as lowercase, some as uppercase
+      assertMatch(submit_to_url, form_el.action);
+      // check that each input element is as expected
+      assertEqual(input_name_a, form_input_els[0].name);
+      assertNotNullOrUndefined( form_input_els[0].value);
+      assertEqual(input_name_b, form_input_els[1].name);
+      assertNotNullOrUndefined( form_input_els[1].value);
     }}
       
   }, {testLog: "testlog"}); 

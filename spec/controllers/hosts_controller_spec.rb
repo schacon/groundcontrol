@@ -350,7 +350,10 @@ describe HostsController do
     end
     
     def do_request(id = nil)
-      post :run_performance_exercise, :id => (id || @host.id)
+      post :run_performance_exercise, 
+        :id          => (id || @host.id), 
+        :aut_version => @aut_version = '918273',
+        :aut_note    => @aut_note    = 'performance aut_note'
       @exercise = assigns[:exercise]
     end
     
@@ -373,8 +376,10 @@ describe HostsController do
     
     it "should assign the host and exercise" do
       do_request
-      assigns[:host].    should == @host
+      assigns[:host]    .should == @host
       assigns[:exercise].should == @exercise
+      assigns[:exercise].aut_version.should == @aut_version
+      assigns[:exercise].aut_note   .should == @aut_note
     end
   end
   
@@ -385,7 +390,11 @@ describe HostsController do
     end
     
     def do_request(host_id = nil, uri = nil)
-      post :run_memory_exercise, :id => (host_id || @host.id), :uri => uri
+      post :run_memory_exercise, 
+        :id          => (host_id || @host.id), 
+        :uri         => uri,
+        :aut_version => @aut_version = '192837',
+        :aut_note    => @aut_note    = 'memory aut_note'
       @exercise = assigns[:exercise]
     end
     
@@ -413,6 +422,8 @@ describe HostsController do
       do_request @host.id, "/"
       assigns[:host].    should == @host
       assigns[:exercise].should == @exercise
+      assigns[:exercise].aut_version.should == @aut_version
+      assigns[:exercise].aut_note   .should == @aut_note
     end
   end
 end
