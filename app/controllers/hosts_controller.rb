@@ -7,8 +7,8 @@ class HostsController < ApplicationController
     @exercise = create_exercise_or_redirect(
       :host          => @host, 
       :exercise_type => 'performance', 
-      :aut_version   => params[:aut_version], 
-      :aut_note      => params[:aut_note]
+      :aut_version   => params[:exercise][:aut_version], 
+      :aut_note      => params[:exercise][:aut_note]
     ) or return
     Bj.submit "./jobs/performance_test.rb #{@exercise.id}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id
@@ -26,8 +26,8 @@ class HostsController < ApplicationController
     @exercise = create_exercise_or_redirect(
       :host          => @host, 
       :exercise_type => 'memory', 
-      :aut_version   => params[:aut_version],
-      :aut_note      => params[:aut_note]
+      :aut_version   => params[:exercise][:aut_version],
+      :aut_note      => params[:exercise][:aut_note]
     ) or return
     Bj.submit "./jobs/memory_test.rb #{@exercise.id} #{@uri}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id

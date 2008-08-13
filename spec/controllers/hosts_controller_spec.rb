@@ -351,9 +351,11 @@ describe HostsController do
     
     def do_request(id = nil)
       post :exercise_performance, 
-        :id          => (id || @host.id), 
-        :aut_version => @aut_version = '918273',
-        :aut_note    => @aut_note    = 'performance aut_note'
+        :id       => (id || @host.id), 
+        :exercise => {
+          :aut_version => @aut_version = '918273',
+          :aut_note    => @aut_note    = 'performance aut_note'
+        }
       @exercise = assigns[:exercise]
     end
     
@@ -391,10 +393,12 @@ describe HostsController do
     
     def do_request(host_id = nil, uri = nil)
       post :exercise_memory, 
-        :id          => (host_id || @host.id), 
-        :uri         => uri,
-        :aut_version => @aut_version = '192837',
-        :aut_note    => @aut_note    = 'memory aut_note'
+        :id       => (host_id || @host.id), 
+        :uri      => uri,
+        :exercise => {
+          :aut_version => @aut_version = '192837',
+          :aut_note    => @aut_note    = 'memory aut_note'
+        }
       @exercise = assigns[:exercise]
     end
     
@@ -424,6 +428,7 @@ describe HostsController do
       assigns[:exercise].should == @exercise
       assigns[:exercise].aut_version.should == @aut_version
       assigns[:exercise].aut_note   .should == @aut_note
+      assigns[:uri]     .should == '/'
     end
   end
 end

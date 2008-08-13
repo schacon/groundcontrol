@@ -28,6 +28,7 @@
   <!-- Put or load sample/test html here (load via sampleLoad(file) in setup() methods) -->
   <div id="sample">
     <div id="exercise_div"> </div>
+    <div id="exercise_form" style="display:none;"> </div>
   </div>
 </div>
 
@@ -72,7 +73,24 @@
       assertNotNullOrUndefined( form_input_els[0].value);
       assertEqual(input_name_b, form_input_els[1].name);
       assertNotNullOrUndefined( form_input_els[1].value);
-    }}
+    }},
+    
+    test_show_exercise_form: function() { with(this) {
+      assertNotVisible('exercise_form');
+      assertNothingRaised(function () {
+        GroundControl.Hosts.show_exercise_form('exercise_form');
+      })
+      assertVisible('exercise_form');
+    }},
+    
+    test_hide_exercise_form: function() { with(this) {
+      assertVisible('exercise_form');
+      assertNothingRaised(function () {
+        GroundControl.Hosts.hide_exercise_form('exercise_form');
+      })
+      assertNotVisible('exercise_form');
+    }},
+    
       
   }, {testLog: "testlog"}); 
   // For each Test.UnitRunner instance, specify the element id where results will be

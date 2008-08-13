@@ -30,3 +30,11 @@ GroundControl.Hosts.exercise_performance = function(submit_to_url, aut_version_f
     if (is_test) return form_el;
     form_el.submit();
 }
+
+GroundControl.Hosts.show_exercise_form = function(element_id) {
+    $(element_id).show();
+}
+
+GroundControl.Hosts.hide_exercise_form = function(element_id) {
+    $(element_id).hide();
+}

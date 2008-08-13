@@ -28,10 +28,24 @@
 	</td><td width="70%" valign="top">
 		
 		<div class="options">
- 		  <%= button_to_function "Run Performance Test...", 
- 		        "GroundControl.Hosts.exercise_performance('#{exercise_performance_path(:id => @host.id)}', 'aut_version', 'aut_note')" %>
+		  <%= link_to_function "Run Performance Test...", "GroundControl.Hosts.show_exercise_form('exercise_form')" %>
 		</div>
 		<h2 class="title">Performance Tests</h2>
+	  <div id="exercise_form" style="display: none;">
+      <% form_for(:exercise, :url => exercise_performance_path(@host.id)) do |f| %>
+        <p>
+          <%= f.label :aut_version %><br />
+          <%= f.text_field :aut_version %>
+        </p>
+        <p>
+          <%= f.label :aut_note %><br />
+          <%= f.text_field :aut_note %>
+        </p>
+        <p>
+          <%= f.submit "Go" %> or <%= link_to_function "Cancel", "GroundControl.Hosts.hide_exercise_form('exercise_form')" %>
+        </p>
+      <% end %>
+	  </div>
 		
 		<table class="long data">
 			<tr>
