@@ -29,7 +29,7 @@
 		
 		<div class="options">
  		  <%= button_to_function "Run Performance Test...", 
- 		        "GroundControl.Hosts.run_performance_test('#{exercise_performance_path(:id => @host.id)}', 'aut_version', 'aut_note')" %>
+ 		        "GroundControl.Hosts.exercise_performance('#{exercise_performance_path(:id => @host.id)}', 'aut_version', 'aut_note')" %>
 		</div>
 		<h2 class="title">Performance Tests</h2>
 		

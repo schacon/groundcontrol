@@ -53,13 +53,13 @@
       assertEqual(x, 0);
     }},
     
-    test_run_performance_test: function() { with(this) {
+    test_exercise_performance: function() { with(this) {
       var form_el;
       var input_name_a  = 'vErSiOn';
       var input_name_b  = 'nOtE';
       var submit_to_url = '/test_run_performance_test/192837';
       assertNothingRaised(function () {
-        form_el = GroundControl.Hosts.run_performance_test(submit_to_url, input_name_a, input_name_b, true);
+        form_el = GroundControl.Hosts.exercise_performance(submit_to_url, input_name_a, input_name_b, true);
       })
       assertNotNullOrUndefined(form_el);
       form_input_els = form_el.getInputs();

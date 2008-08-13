@@ -16,7 +16,7 @@ GroundControl.Hosts.watch_exercise_init = function(exercise_div_id, exercise_id)
 
 // initiates a performance test, gathers AUT info from the user.
 // aut_version_field_name, aut_note_field_name are passed as args to avoid storing model field names here in JS.
-GroundControl.Hosts.run_performance_test = function(submit_to_url, aut_version_field_name, aut_note_field_name) {
+GroundControl.Hosts.exercise_performance = function(submit_to_url, aut_version_field_name, aut_note_field_name) {
     var is_test     = (arguments[3] == true); // if passed, ths 4th arg indicates that this method is called as part of an automated test
     var aut_version = is_test ? '': prompt("Enter build number (optional)");
     var aut_note    = is_test ? '': prompt("Enter any notes you care to record for this test (optional)");
