@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080812205834) do
+ActiveRecord::Schema.define(:version => 20080813233818) do
 
   create_table "bj_config", :primary_key => "bj_config_id", :force => true do |t|
     t.text "hostname"
@@ -58,15 +58,17 @@ ActiveRecord::Schema.define(:version => 20080812205834) do
   end
 
   create_table "exercises", :force => true do |t|
-    t.integer  "host_id",       :limit => 11
-    t.integer  "passed",        :limit => 11
-    t.integer  "failed",        :limit => 11
-    t.integer  "users",         :limit => 11
+    t.integer  "host_id",                    :limit => 11
+    t.integer  "passed",                     :limit => 11
+    t.integer  "failed",                     :limit => 11
+    t.integer  "users",                      :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "exercise_type", :limit => 30
-    t.string   "aut_version",   :limit => 50
+    t.string   "exercise_type",              :limit => 30
+    t.string   "aut_version",                :limit => 50
     t.text     "aut_note"
+    t.integer  "num_concurrent_connections", :limit => 11
+    t.integer  "num_hits_per_page",          :limit => 11
   end
 
   add_index "exercises", ["host_id"], :name => "index_excercises_on_host_id"

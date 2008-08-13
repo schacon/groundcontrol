@@ -13,6 +13,8 @@ describe Exercise do
     @exercise.should respond_to(:exercise_type)
     @exercise.should respond_to(:aut_version)
     @exercise.should respond_to(:aut_note)
+    @exercise.should respond_to(:num_concurrent_connections)
+    @exercise.should respond_to(:num_hits_per_page)
   end
   
   it "should constrict the excercise_type field to the expected types only" do
