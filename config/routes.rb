@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   
   # named routes
   map.exercise_performance '/hosts/:id/exercise_performance', :controller => 'hosts', :action => 'exercise_performance'
-  map.memory_exercise      '/hosts/:id/run_memory_exercise',      :controller => 'hosts', :action => 'run_memory_exercise'
+  map.exercise_memory      '/hosts/:id/exercise_memory',      :controller => 'hosts', :action => 'exercise_memory'
   
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'

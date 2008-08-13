@@ -14,9 +14,9 @@ class HostsController < ApplicationController
     redirect_to :action => 'watch_exercise', :id => @exercise.id
   end
   
-  verify :only => :run_memory_exercise, :params => [:id, :uri], :method => :post,
+  verify :only => :exercise_memory, :params => [:id, :uri], :method => :post,
     :add_flash => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
-  def run_memory_exercise
+  def exercise_memory
     @uri = params[:uri].to_s.strip
     if @uri.blank?
       flash[:error] = "the input parameter \"uri\" was absent"

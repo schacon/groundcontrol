@@ -383,14 +383,14 @@ describe HostsController do
     end
   end
   
-  describe "handling POST /hosts/:host_id/run_memory_exercise" do
+  describe "handling POST /hosts/:host_id/exercise_memory" do
 
     before(:each) do
       @host = hosts(:localhost)
     end
     
     def do_request(host_id = nil, uri = nil)
-      post :run_memory_exercise, 
+      post :exercise_memory, 
         :id          => (host_id || @host.id), 
         :uri         => uri,
         :aut_version => @aut_version = '192837',

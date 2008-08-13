@@ -35,7 +35,7 @@
 		<td align="right"><%= sample.page_size %></td>
 		<td align="right" class="<%= sample.changed_memory < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.changed_memory %></td>
 		<td align="right" class="<%= sample.total_memory   < 500 ? 'good' : 'bad' rescue nil %>"><%= sample.total_memory   %></td>
-		<td><%= button_to 'memory test', memory_exercise_path(
+		<td><%= button_to 'memory test', exercise_memory_path(
 		          :id => @exercise.host.id, :uri => sample.page_uri) %>
 		</td>
 	</tr>

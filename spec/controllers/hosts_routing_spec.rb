@@ -31,8 +31,8 @@ describe HostsController do
       route_for(:controller => "hosts", :action => "exercise_performance", :id => 1).should == "/hosts/1/exercise_performance"
     end
   
-    it "should map { :controller => 'hosts', :action => 'run_memory_exercise', :id => 1 } to /hosts/1/run_memory_exercise" do
-      route_for(:controller => "hosts", :action => "run_memory_exercise", :id => 1).should == "/hosts/1/run_memory_exercise"
+    it "should map { :controller => 'hosts', :action => 'exercise_memory', :id => 1 } to /hosts/1/exercise_memory" do
+      route_for(:controller => "hosts", :action => "exercise_memory", :id => 1).should == "/hosts/1/exercise_memory"
     end
   end
 
@@ -70,8 +70,8 @@ describe HostsController do
       params_from(:get, "/hosts/1/exercise_performance").should == {:controller => "hosts", :action => "exercise_performance", :id => "1"}
     end
   
-    it "should generate params { :controller => 'hosts', action => 'run_memory_exercise', id => '1' } from POST /hosts/1/run_memory_exercise" do
-      params_from(:get, "/hosts/1/run_memory_exercise").should == {:controller => "hosts", :action => "run_memory_exercise", :id => "1"}
+    it "should generate params { :controller => 'hosts', action => 'exercise_memory', id => '1' } from POST /hosts/1/exercise_memory" do
+      params_from(:get, "/hosts/1/exercise_memory").should == {:controller => "hosts", :action => "exercise_memory", :id => "1"}
     end
   end
 end
