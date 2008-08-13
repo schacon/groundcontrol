@@ -27,8 +27,8 @@ describe HostsController do
       route_for(:controller => "hosts", :action => "destroy", :id => 1).should == "/hosts/1"
     end
   
-    it "should map { :controller => 'hosts', :action => 'run_performance_exercise', :id => 1 } to /hosts/1/run_performance_exercise" do
-      route_for(:controller => "hosts", :action => "run_performance_exercise", :id => 1).should == "/hosts/1/run_performance_exercise"
+    it "should map { :controller => 'hosts', :action => 'exercise_performance', :id => 1 } to /hosts/1/exercise_performance" do
+      route_for(:controller => "hosts", :action => "exercise_performance", :id => 1).should == "/hosts/1/exercise_performance"
     end
   
     it "should map { :controller => 'hosts', :action => 'run_memory_exercise', :id => 1 } to /hosts/1/run_memory_exercise" do
@@ -66,8 +66,8 @@ describe HostsController do
       params_from(:delete, "/hosts/1").should == {:controller => "hosts", :action => "destroy", :id => "1"}
     end
   
-    it "should generate params { :controller => 'hosts', action => 'run_performance_exercise', id => '1' } from POST /hosts/1/run_performance_exercise" do
-      params_from(:get, "/hosts/1/run_performance_exercise").should == {:controller => "hosts", :action => "run_performance_exercise", :id => "1"}
+    it "should generate params { :controller => 'hosts', action => 'exercise_performance', id => '1' } from POST /hosts/1/exercise_performance" do
+      params_from(:get, "/hosts/1/exercise_performance").should == {:controller => "hosts", :action => "exercise_performance", :id => "1"}
     end
   
     it "should generate params { :controller => 'hosts', action => 'run_memory_exercise', id => '1' } from POST /hosts/1/run_memory_exercise" do

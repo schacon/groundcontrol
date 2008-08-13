@@ -343,14 +343,14 @@ describe HostsController do
     end
   end
   
-  describe "handling POST /hosts/:host_id/run_performance_exercise" do
+  describe "handling POST /hosts/:host_id/exercise_performance" do
 
     before(:each) do
       @host = hosts(:localhost)
     end
     
     def do_request(id = nil)
-      post :run_performance_exercise, 
+      post :exercise_performance, 
         :id          => (id || @host.id), 
         :aut_version => @aut_version = '918273',
         :aut_note    => @aut_note    = 'performance aut_note'

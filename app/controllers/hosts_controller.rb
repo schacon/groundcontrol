@@ -1,8 +1,8 @@
 class HostsController < ApplicationController
   
-  verify :only => :run_performance_exercise, :params => :id, :method => :post,
+  verify :only => :exercise_performance, :params => :id, :method => :post,
     :add_flash => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
-  def run_performance_exercise
+  def exercise_performance
     @host     = find_host_or_redirect(params[:id]) or return
     @exercise = create_exercise_or_redirect(
       :host          => @host, 
