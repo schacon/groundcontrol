@@ -1,0 +1,26 @@
+<a href="#" onclick="$('#exercise_attributes_container').toggle(); return false;">Show/Hide Details</a>
+<div id="exercise_attributes_container">
+<table class="data">
+  <tr>
+		<th>Host (Role)</th>
+		<td><%= link_to @exercise.host.hostname, host_url(@exercise.host.id) %> (<%= @exercise.host.role.role %>)</td>
+	</tr>
+  <tr>
+		<th>Num Conncurrent Connections</th>
+		<td><%=h @exercise.num_concurrent_connections %></td>
+	</tr>
+  <tr>
+		<th>Num Hits Per Page</th>
+		<td><%=h @exercise.num_hits_per_page %></td>
+	</tr>
+  <tr>
+		<th>AUT Version</th>
+		<td><%=h @exercise.aut_version %></td>
+	</tr>
+  <tr>
+		<th>AUT Note</th>
+		<td><%=h @exercise.aut_note %></td>
+	</tr>
+</table>
+</div>
+<%= spacer %>

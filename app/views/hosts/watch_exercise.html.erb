@@ -1,12 +1,14 @@
 <% content_for :header, javascript_include_tag("jquery") %>
 <% content_for :header, javascript_include_tag("hosts")  %>
-<% exercise_div_id = 'exercise' %>
 
 <h1>Running <%=h @exercise.exercise_type.to_s.titleize %> Exercise</h1>
 
-<div id="<%= exercise_div_id %>">
+<div id="exercise_attribs">
+<%= render :partial => 'exercise_attribs' %>
+</div>
+<div id="exercise_samples">
 <%= render :partial => 'exercise' %>
 </div>
 
 
-<%= javascript_tag "GroundControl.Hosts.watch_exercise_init('#{exercise_div_id}', #{@exercise.id})" %>
+<%= javascript_tag "GroundControl.Hosts.watch_exercise_init('exercise_samples', #{@exercise.id})" %>

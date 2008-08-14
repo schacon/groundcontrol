@@ -7,7 +7,10 @@
 
 <h1><%=h @exercise.exercise_type.to_s.titleize %> Test Results</h1>
 
-<div id="exercise">
+<div id="exercise_attribs">
+<%= render :partial => 'exercise_attribs' %>
+</div>
+<div id="exercise_samples">
 <%= render :partial => 'exercise' %>
 </div>
 

@@ -5,10 +5,12 @@ class HostsController < ApplicationController
   def exercise_performance
     @host     = find_host_or_redirect(params[:id]) or return
     @exercise = create_exercise_or_redirect(
-      :host          => @host, 
-      :exercise_type => 'performance', 
-      :aut_version   => params[:exercise][:aut_version], 
-      :aut_note      => params[:exercise][:aut_note]
+      :host                       => @host, 
+      :exercise_type              => 'performance', 
+      :aut_version                => params[:exercise][:aut_version], 
+      :aut_note                   => params[:exercise][:aut_note],
+      :num_concurrent_connections => params[:exercise][:num_concurrent_connections],
+      :num_hits_per_page          => params[:exercise][:num_hits_per_page]
     ) or return
     Bj.submit "./jobs/performance_test.rb #{@exercise.id}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id
@@ -24,10 +26,12 @@ class HostsController < ApplicationController
     end
     @host     = find_host_or_redirect(params[:id]) or return
     @exercise = create_exercise_or_redirect(
-      :host          => @host, 
-      :exercise_type => 'memory', 
-      :aut_version   => params[:exercise][:aut_version],
-      :aut_note      => params[:exercise][:aut_note]
+      :host                       => @host, 
+      :exercise_type              => 'memory', 
+      :aut_version                => params[:exercise][:aut_version],
+      :aut_note                   => params[:exercise][:aut_note],
+      :num_concurrent_connections => params[:exercise][:num_concurrent_connections],
+      :num_hits_per_page          => params[:exercise][:num_hits_per_page]
     ) or return
     Bj.submit "./jobs/memory_test.rb #{@exercise.id} #{@uri}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id

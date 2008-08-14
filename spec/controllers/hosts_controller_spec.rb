@@ -353,8 +353,10 @@ describe HostsController do
       post :exercise_performance, 
         :id       => (id || @host.id), 
         :exercise => {
-          :aut_version => @aut_version = '918273',
-          :aut_note    => @aut_note    = 'performance aut_note'
+          :aut_version                => @aut_version = '918273',
+          :aut_note                   => @aut_note    = 'performance aut_note',
+          :num_concurrent_connections => @num_concurrent_connections = '53',
+          :num_hits_per_page          => @num_hits_per_page          = '12'
         }
       @exercise = assigns[:exercise]
     end
@@ -378,10 +380,12 @@ describe HostsController do
     
     it "should assign the host and exercise" do
       do_request
-      assigns[:host]    .should == @host
-      assigns[:exercise].should == @exercise
-      assigns[:exercise].aut_version.should == @aut_version
-      assigns[:exercise].aut_note   .should == @aut_note
+      assigns[:host]                               .should == @host
+      assigns[:exercise]                           .should == @exercise
+      assigns[:exercise].aut_version               .should == @aut_version
+      assigns[:exercise].aut_note                  .should == @aut_note
+      assigns[:exercise].num_concurrent_connections.should == @num_concurrent_connections.to_i
+      assigns[:exercise].num_hits_per_page         .should == @num_hits_per_page.to_i
     end
   end
   
@@ -396,8 +400,10 @@ describe HostsController do
         :id       => (host_id || @host.id), 
         :uri      => uri,
         :exercise => {
-          :aut_version => @aut_version = '192837',
-          :aut_note    => @aut_note    = 'memory aut_note'
+          :aut_version                => @aut_version                = '192837',
+          :aut_note                   => @aut_note                   = 'memory aut_note',
+          :num_concurrent_connections => @num_concurrent_connections = '73',
+          :num_hits_per_page          => @num_hits_per_page          = '20'
         }
       @exercise = assigns[:exercise]
     end
@@ -424,11 +430,13 @@ describe HostsController do
     
     it "should assign the host and exercise" do
       do_request @host.id, "/"
-      assigns[:host].    should == @host
-      assigns[:exercise].should == @exercise
-      assigns[:exercise].aut_version.should == @aut_version
-      assigns[:exercise].aut_note   .should == @aut_note
-      assigns[:uri]     .should == '/'
+      assigns[:host]                               .should == @host
+      assigns[:exercise]                           .should == @exercise
+      assigns[:exercise].aut_version               .should == @aut_version
+      assigns[:exercise].aut_note                  .should == @aut_note
+      assigns[:exercise].num_concurrent_connections.should == @num_concurrent_connections.to_i
+      assigns[:exercise].num_hits_per_page         .should == @num_hits_per_page.to_i
+      assigns[:uri]                                .should == '/'
     end
   end
 end
