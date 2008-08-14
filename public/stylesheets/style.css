@@ -156,3 +156,7 @@ div.progressBar div.background {
   width: 0%;
 }
 
+input.big-button {
+    font-size: 20px;
+    padding: 4px 20px;
+}
