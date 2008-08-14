@@ -9,12 +9,13 @@ class HostsController < ApplicationController
       :exercise_type              => 'performance', 
       :aut_version                => params[:exercise][:aut_version], 
       :aut_note                   => params[:exercise][:aut_note],
-      :num_concurrent_connections => params[:exercise][:num_concurrent_connections],
-      :num_hits_per_page          => params[:exercise][:num_hits_per_page]
+      :num_concurrent_connections => (params[:exercise][:num_concurrent_connections].strip || Exercise::DEFAULT_NUM_CONCURRENT_CONNECTIONS),
+      :num_hits_per_page          => (params[:exercise][:num_hits_per_page]         .strip || Exercise::DEFAULT_NUM_HITS_PER_PAGE)
     ) or return
-    Bj.submit "./jobs/performance_test.rb #{@exercise.id}"
+    Bj.submit "./jobs/performance_test.rb #{@exercise.id} #{@exercise.num_concurrent_connections} #{@exercise.num_hits_per_page}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id
   end
+  # TODO:GVT: refactor common code out of the exercise_performance and exercise_memory methods
   
   verify :only => :exercise_memory, :params => [:id, :uri], :method => :post,
     :add_flash => {:error => 'some information was missing from the request'}, :redirect_to => {:controller => 'hosts', :action => 'index'}
@@ -30,8 +31,8 @@ class HostsController < ApplicationController
       :exercise_type              => 'memory', 
       :aut_version                => params[:exercise][:aut_version],
       :aut_note                   => params[:exercise][:aut_note],
-      :num_concurrent_connections => params[:exercise][:num_concurrent_connections],
-      :num_hits_per_page          => params[:exercise][:num_hits_per_page]
+      :num_concurrent_connections => (params[:exercise][:num_concurrent_connections] || Exercise::DEFAULT_NUM_CONCURRENT_CONNECTIONS),
+      :num_hits_per_page          => (params[:exercise][:num_hits_per_page] || Exercise::DEFAULT_NUM_HITS_PER_PAGE)
     ) or return
     Bj.submit "./jobs/memory_test.rb #{@exercise.id} #{@uri}"
     redirect_to :action => 'watch_exercise', :id => @exercise.id

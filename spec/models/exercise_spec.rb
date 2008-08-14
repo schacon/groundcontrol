@@ -9,6 +9,37 @@ describe Exercise do
     @exercise.exercise_type = Exercise::EXERCISE_TYPES.first
   end
   
+  it "should have the expected constants and their values" do
+    Exercise::DEFAULT_NUM_CONCURRENT_CONNECTIONS.should == 1
+    Exercise::DEFAULT_NUM_HITS_PER_PAGE         .should == 10
+  end
+  
+  it "should have the expected defaults " do
+    @exercise.num_concurrent_connections.should == Exercise::DEFAULT_NUM_CONCURRENT_CONNECTIONS
+    @exercise.num_hits_per_page         .should == Exercise::DEFAULT_NUM_HITS_PER_PAGE
+    
+    new_conns = 135
+    new_hits  = 124
+    @exercise.num_concurrent_connections = new_conns
+    @exercise.num_hits_per_page          = new_hits
+    
+    @exercise.num_concurrent_connections.should_not == Exercise::DEFAULT_NUM_CONCURRENT_CONNECTIONS
+    @exercise.num_hits_per_page         .should_not == Exercise::DEFAULT_NUM_HITS_PER_PAGE
+    
+    @exercise.num_concurrent_connections.should == new_conns
+    @exercise.num_hits_per_page         .should == new_hits
+  end
+  
+  it "should be able to calculate how many samples it is expected to generate" do
+    new_conns = 135
+    new_hits  = 124
+    @exercise.num_concurrent_connections = new_conns
+    @exercise.num_hits_per_page          = new_hits
+    @exercise.host = hosts(:localhost)
+    @exercise.host.role.pages.should_not == nil
+    @exercise.expected_samples.should    == new_conns*new_hits*@exercise.host.role.pages.size
+  end
+  
   it "should respond to expected methods" do
     @exercise.should respond_to(:exercise_type)
     @exercise.should respond_to(:aut_version)

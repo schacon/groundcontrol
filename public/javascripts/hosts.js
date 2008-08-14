@@ -15,8 +15,9 @@ GroundControl.Hosts.watch_exercise_init = function(exercise_div_id, exercise_id)
 }
 
 
-GroundControl.Hosts.show_exercise_form = function(element_id) {
+GroundControl.Hosts.show_exercise_form = function(element_id, form_element_id) {
     $(element_id).show();
+    $(form_element_id).focusFirstElement();
 }
 
 GroundControl.Hosts.hide_exercise_form = function(element_id) {

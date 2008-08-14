@@ -18,6 +18,9 @@
 class Exercise < ActiveRecord::Base
   EXERCISE_TYPES = %w{performance memory}.freeze
   
+  DEFAULT_NUM_CONCURRENT_CONNECTIONS = 1
+  DEFAULT_NUM_HITS_PER_PAGE          = 10
+  
   belongs_to :host
   has_many :samples
   
@@ -50,4 +53,19 @@ class Exercise < ActiveRecord::Base
     end
   end
   
+  def num_concurrent_connections
+    x = read_attribute(:num_concurrent_connections)
+    return DEFAULT_NUM_CONCURRENT_CONNECTIONS if x.blank?
+    x
+  end
+  
+  def num_hits_per_page
+    x = read_attribute(:num_hits_per_page)
+    return DEFAULT_NUM_HITS_PER_PAGE if x.blank?
+    x
+  end
+  
+  def expected_samples
+    num_concurrent_connections*num_hits_per_page*host.role.pages.size
+  end
 end

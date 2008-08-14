@@ -28,11 +28,12 @@
 	</td><td width="70%" valign="top">
 		
 		<div class="options">
-		  <%= link_to_function "Run Performance Test...", "GroundControl.Hosts.show_exercise_form('exercise_form')" %>
+		  <%= link_to_function "Run Performance Test...", "GroundControl.Hosts.show_exercise_form('exercise_form', 'exercise_attributes_form')" %>
 		</div>
 		<h2 class="title">Performance Tests</h2>
 	  <div id="exercise_form" style="display: none;">
-      <% form_for(:exercise, :url => exercise_performance_path(@host.id)) do |f| %>
+	    <span style="color:blue;">All fields are optional</span>
+      <% form_for(:exercise, :url => exercise_performance_path(@host.id), :html => {:id => 'exercise_attributes_form'}) do |f| %>
         <p>
           <%= f.label :num_concurrent_connections %><br />
           <%= f.text_field :num_concurrent_connections %>
