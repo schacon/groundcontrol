@@ -34,6 +34,14 @@
 	  <div id="exercise_form" style="display: none;">
       <% form_for(:exercise, :url => exercise_performance_path(@host.id)) do |f| %>
         <p>
+          <%= f.label :num_concurrent_connections %><br />
+          <%= f.text_field :num_concurrent_connections %>
+        </p>
+        <p>
+          <%= f.label :num_hits_per_page %><br />
+          <%= f.text_field :num_hits_per_page %>
+        </p>
+        <p>
           <%= f.label :aut_version %><br />
           <%= f.text_field :aut_version %>
         </p>
@@ -45,6 +53,7 @@
           <%= f.submit "Go" %> or <%= link_to_function "Cancel", "GroundControl.Hosts.hide_exercise_form('exercise_form')" %>
         </p>
       <% end %>
+      <%= spacer %>
 	  </div>
 		
 		<table class="long data">
@@ -75,7 +84,7 @@
 		<br/>
 		
 		<div class="options">[run tests]</div>
-		<h2 class="title">Functional Tests</h3>
+		<h2 class="title">Functional Tests</h2>
 			
 		(no tests)
 		
