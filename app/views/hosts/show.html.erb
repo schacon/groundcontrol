@@ -1,7 +1,7 @@
 <% content_for :header, javascript_include_tag("hosts") << javascript_include_tag("prototype")  %>
 
 <h1><%=h @host.hostname %> (<%= @host.role.role %>)</h1>
-<h2><%=h @host.url %></h2>
+<h2><%= link_to h(@host.url), @host.url %></h2>
 <br/>
 
 <table class="long">
