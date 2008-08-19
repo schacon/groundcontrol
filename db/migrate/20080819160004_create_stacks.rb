@@ -4,15 +4,15 @@ class CreateStacks < ActiveRecord::Migration
       t.string      :name, :limit => 50
       t.timestamps
     end
-    create_table :stacks_roles,  :id => false do |t|
+    create_table :roles_stacks,  :id => false do |t|
       t.integer     :stack_id, :null => false
       t.integer     :role_id , :null => false
     end
-    add_index :stacks_roles, [:stack_id, :role_id], :unique => true
+    add_index :roles_stacks, [:stack_id, :role_id], :unique => true
   end
 
   def self.down
-    drop_table :stacks_roles
+    drop_table :roles_stacks
     drop_table :stacks
   end
 end
