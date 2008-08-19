@@ -26,8 +26,8 @@ describe "Create Stack" do
   it "should be able to be populated with data and saved" do
     new_name = "Stack rspec test"
     @stack.name == new_name
-    @stack.roles << roles(:rmc_internal)
-    @stack.roles << roles(:web_app1)
+    @stack.roles << roles(:webapp)
+    @stack.roles << roles(:reactor)
     
     @stack.should be_valid
     @stack.save.should == true

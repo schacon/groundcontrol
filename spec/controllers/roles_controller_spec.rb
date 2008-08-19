@@ -313,7 +313,7 @@ describe RolesController do
   
   describe "handling XHR POST /roles/edit_page_position/1" do
     before(:each) do
-      @role = roles(:web_site_external)
+      @role = roles(:website)
     end
     
     def do_edit_page_position

@@ -9,3 +9,10 @@
 #  updated_at :datetime        
 #
 
+qa:
+  name: "qa"
+  roles: webapp, db, reactor
+
+localhost:
+  name: "localhost"
+  roles: webapp, db, virt-reactor

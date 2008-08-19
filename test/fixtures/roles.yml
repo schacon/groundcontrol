@@ -7,21 +7,23 @@
 #  role :string(255)     
 #
 
-web_site_localhost:
-  role: "Web site on localhost"
-web_site_internal:
-  role: "Web site on local network"
-web_site_external:
-  role: "Web site outside of local network"
+webapp:
+  role: "web application server"
 
-rmc_localhost:
-  role: "RMC instance on localhost"
-rmc_internal:
-  role: "RMC instance on local network"
-rmc_external:
-  role: "RMC instance outside of local network"
+db:
+  role: "application db server"
 
-web_app1:
-  role: "Web App Instance"
-client_app1:
-  role: "Client App Instance"
+siteadmin:
+  role: "application admin app server"
+
+reactor:
+  role: "physical reactor"
+
+virt-reactor:
+  role: "virtual reactor"
+
+website:
+  role: "generic web site"
+
+groundcontrol:
+  role: "the GroundControl application"
