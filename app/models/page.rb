@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20080812205834
+# Schema version: 20080819160004
 #
 # Table name: pages
 #
