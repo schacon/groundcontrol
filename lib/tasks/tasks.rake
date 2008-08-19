@@ -1,5 +1,5 @@
 namespace :db do
-  desc "destroy and recreate the database for the current RAILS_ENV and load rspec fixtures"
+  desc "destroy and recreate the database from db/schema.rb and load fixtures (respects the RAILS_ENV)"
   task(:bootstrap => [:environment]) do
     Rake::Task[:"db:reset"]             .invoke
     Rake::Task[:"db:fixtures:load"]     .invoke
