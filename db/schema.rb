@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080813233818) do
+ActiveRecord::Schema.define(:version => 20080819160004) do
 
   create_table "bj_config", :primary_key => "bj_config_id", :force => true do |t|
     t.text "hostname"
@@ -116,5 +116,18 @@ ActiveRecord::Schema.define(:version => 20080813233818) do
   end
 
   add_index "samples", ["exercise_id", "page_id"], :name => "index_samples_on_excercise_id_and_page_id"
+
+  create_table "stacks", :force => true do |t|
+    t.string   "name",       :limit => 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stacks_roles", :id => false, :force => true do |t|
+    t.integer "stack_id", :limit => 11, :default => 0, :null => false
+    t.integer "role_id",  :limit => 11, :default => 0, :null => false
+  end
+
+  add_index "stacks_roles", ["stack_id", "role_id"], :name => "index_stacks_roles_on_stack_id_and_role_id", :unique => true
 
 end
