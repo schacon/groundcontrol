@@ -8,4 +8,12 @@ describe Stack do
   it "should be valid" do
     @stack.should be_valid
   end
+  
+  it "should be savable" do
+    @stack.save.should == true
+  end
+  
+  it "should have the expected associations" do
+    @stack.roles.should be_empty
+  end
 end

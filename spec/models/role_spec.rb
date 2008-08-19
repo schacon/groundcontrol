@@ -13,4 +13,8 @@ describe Role do
     @role.save       .should equal(true)
     @role.new_record?.should equal(false)
   end
+  
+  it "should have the expected associations" do
+    @role.stacks.should be_empty
+  end
 end

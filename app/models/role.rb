@@ -10,4 +10,5 @@
 class Role < ActiveRecord::Base
   has_many :hosts
   has_many :pages, :order => "position"
+  has_and_belongs_to_many :stacks
 end
