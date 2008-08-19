@@ -18,7 +18,7 @@ class SeleniumImporterTest < Test::Unit::TestCase
   def test_import
     test_new
     # page_count =  Page.count(true)
-    assert_equal  true,  @s.import(File.join(File.dirname(__FILE__), '..', 'test', 'rmc.html')), "this file does exist and is expected to be readable"
+    assert_equal  true,  @s.import(File.join(File.dirname(__FILE__), 'rmc.html')), "this file does exist and is expected to be readable"
     # assert_equal  page_count+1, Page.count(true)
   end
 end
