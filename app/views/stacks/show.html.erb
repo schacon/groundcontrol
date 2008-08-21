@@ -1,5 +1,10 @@
 <div>Name:</div>
 <div><%= @stack.name %></div>
+<%= spacer 10 %>
+
+<div>Hosts:</div>
+<div id="show_stack_hosts"><%= display_hosts(@stack) %></div>
+<%= spacer 10 %>
 
 <%= spacer %>
 
