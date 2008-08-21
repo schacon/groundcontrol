@@ -3,6 +3,7 @@
 <table class="data long">
   <tr>
     <th>Name</th>
+    <th>Hosts</th>
     <th>Actions</th>
   </tr>
 
@@ -10,6 +11,9 @@
   <tr>
     <td>
       <%= stack.name %>
+    </td>
+    <td>
+      <%= display_hosts(stack) %>
     </td>
     <td>
       <%= link_to 'Show', stack %>
