@@ -194,11 +194,6 @@ describe StacksController do
 
   describe "handling POST /stacks" do
 
-    before(:each) do
-      # @stack = mock_model(Stack, :to_param => "1")
-      # Stack.stub!(:new).and_return(@stack)
-    end
-    
     describe "with successful save" do
   
       def do_post
