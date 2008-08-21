@@ -132,11 +132,14 @@ describe StacksController do
   
     def do_get
       get :new
+      @hosts = assigns[:hosts]
     end
 
     it "should be successful" do
       do_get
       response.should be_success
+      @hosts.should_not be_nil
+      @hosts.size.should equal(Host.count(true))
     end
   
     it "should render new template" do

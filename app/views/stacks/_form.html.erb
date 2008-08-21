@@ -3,5 +3,9 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :hosts %><br />
+    <%#= f.select(:hosts, @hosts.map{|h| [h.hostname, h.id]}, {}, {:multiple => true}) %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>

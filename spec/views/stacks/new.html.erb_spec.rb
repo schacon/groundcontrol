@@ -5,7 +5,9 @@ describe "/stacks/new.html.erb" do
   
   before(:each) do
     @stack          = Stack.new
+    @hosts          = Host.find(:all)
     assigns[:stack] = @stack
+    assigns[:hosts] = @hosts
   end
 
   it "should render new form" do
@@ -13,6 +15,7 @@ describe "/stacks/new.html.erb" do
     
     response.should have_tag("form[action=?][method=post]", stacks_path) do
       with_tag "input[name='stack[name]']"
+      # with_tag "select[name='stack[roles]']"
     end
   end
 end

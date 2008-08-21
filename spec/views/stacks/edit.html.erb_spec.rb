@@ -5,7 +5,9 @@ describe "/stacks/edit.html.erb" do
   
   before do
     @stack          = stacks(:qa)
+    @hosts          = Host.find(:all)
     assigns[:stack] = @stack
+    assigns[:hosts] = @hosts
   end
 
   it "should render edit form" do

@@ -25,6 +25,7 @@ class StacksController < ApplicationController
   # GET /stacks/new.xml
   def new
     @stack = Stack.new
+    @hosts = host_list
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class StacksController < ApplicationController
   # GET /stacks/1/edit
   def edit
     @stack = Stack.find(params[:id])
+    @hosts = host_list
   end
 
   # POST /stacks
@@ -81,5 +83,10 @@ class StacksController < ApplicationController
       format.html { redirect_to(stacks_url) }
       format.xml  { head :ok }
     end
+  end
+
+private
+  def host_list
+    Host.find(:all, :order => 'hostname')
   end
 end
