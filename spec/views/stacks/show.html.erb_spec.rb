@@ -11,5 +11,6 @@ describe "/stacks/show.html.erb" do
   it "should render the show template and include relevant object attributes" do
     render "/stacks/show.html.erb"
     response.should have_tag("div", @stack.name)
+    response.should have_tag("div", @stack.hosts.collect{|h| h.hostname}.join(","))
   end
 end
