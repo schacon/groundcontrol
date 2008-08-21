@@ -4,10 +4,7 @@ describe "/stacks/index.html.erb" do
   include StacksHelper
   
   before(:each) do
-    stack_98 = mock_model(Stack)
-    stack_99 = mock_model(Stack)
-
-    assigns[:stacks] = [stack_98, stack_99]
+    assigns[:stacks] = Stack.find(:all)
   end
 
   it "should render list of stacks" do
