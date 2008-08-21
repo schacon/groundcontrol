@@ -1,16 +1,16 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe "Empty Stack" do
+describe "An Empty Stack" do
   before(:each) do
     @stack = Stack.new
   end
 
-  it "should be valid while empty" do
-    @stack.should be_valid
+  it "should not be valid while empty" do
+    @stack.should_not be_valid
   end
   
-  it "should be savable" do
-    @stack.save.should == true
+  it "should not be savable" do
+    @stack.save.should == false
   end
   
   it "should have the expected associations" do
@@ -18,14 +18,14 @@ describe "Empty Stack" do
   end
 end
 
-describe "Create Stack" do
+describe "A newly created Stack" do
   before(:each) do
     @stack = Stack.new
   end
   
   it "should be able to be populated with data and saved" do
     new_name = "Stack rspec test"
-    @stack.name == new_name
+    @stack.name   = new_name
     @stack.roles << roles(:webapp)
     @stack.roles << roles(:reactor)
     

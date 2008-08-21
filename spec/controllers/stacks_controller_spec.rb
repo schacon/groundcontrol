@@ -195,25 +195,26 @@ describe StacksController do
   describe "handling POST /stacks" do
 
     before(:each) do
-      @stack = mock_model(Stack, :to_param => "1")
-      Stack.stub!(:new).and_return(@stack)
+      # @stack = mock_model(Stack, :to_param => "1")
+      # Stack.stub!(:new).and_return(@stack)
     end
     
     describe "with successful save" do
   
       def do_post
-        @stack.should_receive(:save).and_return(true)
-        post :create, :stack => {}
+        post :create, :stack => {:name => 'a stack'}
+        @stack = assigns[:stack]
       end
   
       it "should create a new stack" do
-        Stack.should_receive(:new).with({}).and_return(@stack)
+        stack_count = Stack.count(true)
         do_post
+        Stack.count(true).should equal(stack_count+1)
       end
 
       it "should redirect to the new stack" do
         do_post
-        response.should redirect_to(stack_url("1"))
+        response.should redirect_to(stack_url(@stack.id))
       end
       
     end
@@ -221,7 +222,6 @@ describe StacksController do
     describe "with failed save" do
 
       def do_post
-        @stack.should_receive(:save).and_return(false)
         post :create, :stack => {}
       end
   

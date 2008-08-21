@@ -43,7 +43,7 @@ class StacksController < ApplicationController
     @stack = Stack.new(params[:stack])
 
     respond_to do |format|
-      if @stack.save
+      if @stack.valid? && @stack.save
         flash[:notice] = 'Stack was successfully created.'
         format.html { redirect_to(@stack) }
         format.xml  { render :xml => @stack, :status => :created, :location => @stack }

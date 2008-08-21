@@ -4,8 +4,7 @@ describe "/stacks/new.html.erb" do
   include StacksHelper
   
   before(:each) do
-    @stack = mock_model(Stack)
-    @stack.stub!(:new_record?).and_return(true)
+    @stack          = Stack.new
     assigns[:stack] = @stack
   end
 
@@ -13,6 +12,7 @@ describe "/stacks/new.html.erb" do
     render "/stacks/new.html.erb"
     
     response.should have_tag("form[action=?][method=post]", stacks_path) do
+      with_tag "input[name='stack[name]']"
     end
   end
 end
