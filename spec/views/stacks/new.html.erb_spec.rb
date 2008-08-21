@@ -15,7 +15,7 @@ describe "/stacks/new.html.erb" do
     
     response.should have_tag("form[action=?][method=post]", stacks_path) do
       with_tag "input[name='stack[name]']"
-      # with_tag "select[name='stack[roles]']"
+      with_tag "select[name='stack[host_ids][]']"
     end
   end
 end

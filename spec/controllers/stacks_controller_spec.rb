@@ -200,14 +200,20 @@ describe StacksController do
     describe "with successful save" do
   
       def do_post
-        post :create, :stack => {:name => 'a stack'}
+        @hosts = [hosts(:rmc01_virtual).id.to_s, hosts(:rmc02_virtual).id.to_s]
+        post :create, :stack => {
+          :name     => 'a stack',
+          :host_ids => @hosts
+        }
         @stack = assigns[:stack]
       end
   
       it "should create a new stack" do
         stack_count = Stack.count(true)
         do_post
-        Stack.count(true).should equal(stack_count+1)
+        Stack.count(true) .should equal(stack_count+1)
+        @stack.new_record?.should == false
+        @stack.hosts.size .should == @hosts.size
       end
 
       it "should redirect to the new stack" do
