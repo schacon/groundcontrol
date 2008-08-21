@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :stacks
+
   map.resources :pages
 
   map.resources :pages
