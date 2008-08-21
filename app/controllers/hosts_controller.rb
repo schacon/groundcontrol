@@ -82,7 +82,8 @@ class HostsController < ApplicationController
   # GET /hosts/new
   # GET /hosts/new.xml
   def new
-    @host = Host.new
+    @host  = Host.new
+    @roles = Role.find(:all, :order => 'role')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -101,7 +102,7 @@ class HostsController < ApplicationController
     @host = Host.new(params[:host])
 
     respond_to do |format|
-      if @host.save
+      if @host.valid? && @host.save
         flash[:notice] = 'Host was successfully created.'
         format.html { redirect_to(@host) }
         format.xml  { render :xml => @host, :status => :created, :location => @host }

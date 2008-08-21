@@ -4,6 +4,10 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :role_id %><br />
+    <%= f.select :role_id, @roles.map{|r| [r.role, r.id] } %>
+  </p>
+  <p>
     <%= f.label :hostname %><br />
     <%= f.text_field :hostname %>
   </p>

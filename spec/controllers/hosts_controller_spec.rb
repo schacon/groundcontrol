@@ -132,11 +132,14 @@ describe HostsController do
   
     def do_get
       get :new
+      @roles = assigns[:roles]
     end
 
     it "should be successful" do
       do_get
       response.should be_success
+      @roles.should_not be_nil
+      @roles.size.should equal(Role.count)
     end
   
     it "should render new template" do
@@ -194,26 +197,31 @@ describe HostsController do
 
   describe "handling POST /hosts" do
 
-    before(:each) do
-      @host = mock_model(Host, :to_param => "1")
-      Host.stub!(:new).and_return(@host)
-    end
-    
     describe "with successful save" do
   
       def do_post
-        @host.should_receive(:save).and_return(true)
-        post :create, :host => {}
+        post :create, :host => {
+          :hostname     => '',
+          :url          => '',
+          :url_username => '',
+          :url_password => '',
+          :ssh_username => '',
+          :ssh_password => '',
+          :role_id      => roles(:webapp).id
+        }
+        @host = assigns[:host]
       end
   
       it "should create a new host" do
-        Host.should_receive(:new).with({}).and_return(@host)
+        host_count = Host.count
         do_post
+        @host.new_record?.should == false
+        Host.count(true).should == (host_count+1)
       end
 
       it "should redirect to the new host" do
         do_post
-        response.should redirect_to(host_url("1"))
+        response.should redirect_to(host_url(@host.id))
       end
       
     end
@@ -221,7 +229,6 @@ describe HostsController do
     describe "with failed save" do
 
       def do_post
-        @host.should_receive(:save).and_return(false)
         post :create, :host => {}
       end
   
