@@ -1,14 +1,21 @@
 <h1>Listing stacks</h1>
 
-<table>
+<table class="data long">
   <tr>
+    <th>Name</th>
+    <th>Actions</th>
   </tr>
 
 <% for stack in @stacks %>
   <tr>
-    <td><%= link_to 'Show', stack %></td>
-    <td><%= link_to 'Edit', edit_stack_path(stack) %></td>
-    <td><%= link_to 'Destroy', stack, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= stack.name %>
+    </td>
+    <td>
+      <%= link_to 'Show', stack %>
+      <%= link_to 'Edit', edit_stack_path(stack) %>
+      <%= link_to 'Destroy', stack, :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>

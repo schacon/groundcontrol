@@ -16,5 +16,3 @@ describe "/stacks/new.html.erb" do
     end
   end
 end
-
-

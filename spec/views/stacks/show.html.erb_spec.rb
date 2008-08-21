@@ -4,13 +4,12 @@ describe "/stacks/show.html.erb" do
   include StacksHelper
   
   before(:each) do
-    @stack = mock_model(Stack)
-
+    @stack          = stacks(:qa)
     assigns[:stack] = @stack
   end
 
-  it "should render attributes in <p>" do
+  it "should render the show template and include relevant object attributes" do
     render "/stacks/show.html.erb"
+    response.should have_tag("div", @stack.name)
   end
 end
-

@@ -14,4 +14,3 @@ describe "/stacks/index.html.erb" do
     render "/stacks/index.html.erb"
   end
 end
-

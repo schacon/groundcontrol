@@ -4,7 +4,7 @@ describe "/stacks/edit.html.erb" do
   include StacksHelper
   
   before do
-    @stack = mock_model(Stack)
+    @stack          = stacks(:qa)
     assigns[:stack] = @stack
   end
 
@@ -12,6 +12,7 @@ describe "/stacks/edit.html.erb" do
     render "/stacks/edit.html.erb"
     
     response.should have_tag("form[action=#{stack_path(@stack)}][method=post]") do
+      with_tag("input[name='stack[name]']")
     end
   end
 end

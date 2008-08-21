@@ -3,9 +3,7 @@
 <% form_for(@stack) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+<%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>
 
 <%= link_to 'Show', @stack %> |
