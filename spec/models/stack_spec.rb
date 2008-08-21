@@ -14,7 +14,7 @@ describe "An Empty Stack" do
   end
   
   it "should have the expected associations" do
-    @stack.roles.should be_empty
+    @stack.hosts.should be_empty
   end
 end
 
@@ -26,12 +26,12 @@ describe "A newly created Stack" do
   it "should be able to be populated with data and saved" do
     new_name = "Stack rspec test"
     @stack.name   = new_name
-    @stack.roles << roles(:webapp)
-    @stack.roles << roles(:reactor)
+    @stack.hosts << hosts(:rmc01_virtual)
+    @stack.hosts << hosts(:rmc02_virtual)
     
     @stack.should be_valid
     @stack.save.should == true
-    @stack.roles.should_not be_empty
-    @stack.roles.size.should == 2
+    @stack.hosts.should_not be_empty
+    @stack.hosts.size.should == 2
   end
 end

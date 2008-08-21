@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(:version => 20080819160004) do
     t.string  "ssh_password"
   end
 
+  create_table "hosts_stacks", :id => false, :force => true do |t|
+    t.integer "stack_id", :limit => 11, :default => 0, :null => false
+    t.integer "host_id",  :limit => 11, :default => 0, :null => false
+  end
+
+  add_index "hosts_stacks", ["stack_id", "host_id"], :name => "index_hosts_stacks_on_stack_id_and_host_id", :unique => true
+
   create_table "pages", :force => true do |t|
     t.string  "uri_pattern"
     t.integer "role_id",     :limit => 11
@@ -98,13 +105,6 @@ ActiveRecord::Schema.define(:version => 20080819160004) do
   create_table "roles", :force => true do |t|
     t.string "role"
   end
-
-  create_table "roles_stacks", :id => false, :force => true do |t|
-    t.integer "stack_id", :limit => 11, :default => 0, :null => false
-    t.integer "role_id",  :limit => 11, :default => 0, :null => false
-  end
-
-  add_index "roles_stacks", ["stack_id", "role_id"], :name => "index_roles_stacks_on_stack_id_and_role_id", :unique => true
 
   create_table "samples", :force => true do |t|
     t.integer  "exercise_id",    :limit => 11

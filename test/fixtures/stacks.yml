@@ -11,8 +11,8 @@
 
 qa:
   name: "qa"
-  roles: webapp, db, reactor
+  hosts: rmc01_virtual, rmc02_virtual
 
 localhost:
   name: "localhost"
-  roles: webapp, db, virt-reactor
+  hosts: localhost
