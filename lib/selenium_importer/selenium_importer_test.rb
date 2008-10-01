@@ -3,7 +3,7 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'selenium_importer'
 
 class SeleniumImporterTest < Test::Unit::TestCase
   def test_new
-    assert_not_nil @s = SeleniumImporter.new
+    assert_not_nil @s = SeleniumImporter.new(:log => RAILS_DEFAULT_LOGGER)
     assert_equal   "SeleniumImporter", "#{@s.class}"
   end
   
@@ -14,11 +14,32 @@ class SeleniumImporterTest < Test::Unit::TestCase
     assert_equal   false, @s.import("no/such/file")
   end
   
-  # TODO:GVT: continue implementing this test and its class so that the commented out line would pass
+  def test_exercise
+    test_new
+    assert_equal nil, @s.exercise, "should be nil when the import method has not been called"
+    assert_import
+    exercise = @s.exercise
+    assert_not_nil exercise, "should be an instance of Exercise"
+    assert_equal "Exercise", "#{exercise.class}", "should be an instance of Exercise"
+  end
+  
+  # TODO: continue implementing this test and its class so that the commented out lines would pass
   def test_import
     test_new
-    # page_count =  Page.count(true)
-    assert_equal  true,  @s.import(File.join(File.dirname(__FILE__), 'rmc.html')), "this file does exist and is expected to be readable"
-    # assert_equal  page_count+1, Page.count(true)
+    exercise_count = Exercise.count(true)
+    assert_import
+    assert_equal exercise_count+1, Exercise.count(true)
+    exercise =   @s.exercise
+    assert_equal "https://reactrix.rmc1.xen.reactrix.com", exercise.host.url
+    assert_equal Exercise::EXERCISE_TYPES[0], exercise.exercise_type
+    assert_equal "web application server", exercise.host.role.role
+    # assert_equal "https://reactrix.rmc1.xen.reactrix.com/displays/list", exercise.host.url,  "expected the Host to have a URL"
+    # page =       exercise.host.role.pages.find(:all, :order => 'id DESC').first
+    # assert_equal "assert_title", page.assertions
+  end
+
+private
+  def assert_import
+    assert_equal true,  @s.import(File.expand_path(File.join(File.dirname(__FILE__), 'rmc.html'))), @s.errors.to_s
   end
 end
